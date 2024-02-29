@@ -1,0 +1,52 @@
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/InfluxCommunity/influxdb3-go/influxdb3"
+)
+
+func main() {
+	// Influxdb
+	// Use env variables to initialize client
+	url := os.Getenv("INFLUXDB_URL")
+	token := os.Getenv("INFLUXDB_TOKEN")
+	database := os.Getenv("INFLUXDB_DATABASE")
+
+	// Create a new client using an InfluxDB server base URL and an authentication token
+	influxdb3Client, err := influxdb3.New(influxdb3.ClientConfig{
+		Host:     url,
+		Token:    token,
+		Database: database,
+	})
+	fmt.Printf("\n")
+	fmt.Printf("database: %v\n", database)
+	fmt.Printf("token: %v\n", token)
+	fmt.Printf("url: %v\n", url)
+
+	if err != nil {
+		panic(err)
+	}
+	// Close influxdb3Client at the end and escalate error if present
+	defer func(influxdb3Client *influxdb3.Client) {
+		err := influxdb3Client.Close()
+		if err != nil {
+			panic(err)
+		}
+	}(influxdb3Client)
+
+	// r := gin.Default()
+	// r.POST("/api/timeseries", func(c *gin.Context) {
+
+	
+
+	
+
+	// c.JSON(http.StatusOK, gin.H{
+	// 	"message": "pong",
+	// })
+	// })
+	// r.Run(":8888") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+}
