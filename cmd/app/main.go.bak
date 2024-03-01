@@ -8,6 +8,7 @@ import (
 	"github.com/InfluxCommunity/influxdb3-go/influxdb3"
 )
 
+
 func main() {
 	// Influxdb
 	// Use env variables to initialize client
