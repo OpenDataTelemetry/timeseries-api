@@ -37,19 +37,17 @@ func main() {
 
 	// API
 	r := gin.Default()
-	r.GET("/api/timeseries", func(c *gin.Context) {
+	r.GET("/api/v0.1/smartcampusmaua/SmartLights", func(c *gin.Context) {
 
 		// Prepare FlightSQL query
 		query := `
-					SELECT *
-						FROM "APPDET"
-						WHERE
-						time >= now() - interval '7 days'
-						AND
-						("fCnt" IS NOT NULL)
-						AND
-						"nodeName" IN ('DET-03') AND "rxInfo_mac_0" IN ('b827ebfffe5ddbb6')
-						ORDER BY time DESC
+		SELECT *
+		FROM "SmartLights"
+		WHERE
+		time >= now() - interval '1 hour'
+		AND
+		("data_ad" IS NOT NULL OR "data_boardVoltage" IS NOT NULL)
+		ORDER BY time DESC;
 	`
 		// queryOptions := influxdb3.QueryOptions{
 		// 	QueryType: influxdb3.InfluxQL,
@@ -62,17 +60,60 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-
+		
+		
 		for iterator.Next() {
 			value := iterator.Value()
 			fmt.Printf("\nvalue: %v\n", value)
-
+		
 			fCnt := value["fCnt"]
+			data_ad := value["data_ad"]
+			data_boardVoltage := value["data_boardVoltage"]
+			data_counter := value["data_counter"]
+			data_counter_0d_0 := value["data_counter_0d_0"]
+			data_counter_0d_1 := value["data_counter_0d_1"]
+			data_counter_0d_2 := value["data_counter_0d_2"]
+			data_counter_4_20 := value["data_counter_4_20"]
+			data_distance := value["data_distance"]
+			data_humidity := value["data_humidity"]
+			data_lat := value["data_lat"]
+			data_lon := value["data_lon"]
+			data_temperature := value["data_temperature"]
+			// rxInfo_altitude_0 := value["rxInfo.altitude_0"]
+			// rxInfo_altitude_1 := value["rxInfo.altitude_1"]
+			// rxInfo_altitude_2 := value["rxInfo.altitude_2"]
+			// rxInfo_latitude_0 := value["rxInfo.latitude_0"]
+			// rxInfo_latitude_1 := value["rxInfo.latitude_1"]
+			// rxInfo_latitude_2 := value["rxInfo.latitude_2"]
+			// rxInfo_loRaSNR_0 := value["rxInfo.loRaSNR_0"]
+			// rxInfo_loRaSNR_1 := value["rxInfo.loRaSNR_1"]
+			// rxInfo_loRaSNR_2 := value["rxInfo.loRaSNR_2"]
+			// rxInfo_longitude_0 := value["rxInfo.longitude_0"]
+			// rxInfo_longitude_1 := value["rxInfo.longitude_1"]
+			// rxInfo_longitude_2 := value["rxInfo.longitude_2"]
+			// rxInfo_rssi_0 := value["rxInfo.rssi_0"]
+			// rxInfo_rssi_1 := value["rxInfo.rssi_1"]
+			// rxInfo_rssi_2 := value["rxInfo.rssi_2"]
+			// txInfo_dataRate_spreadFactor = value["txInfo_dataRate_spreadFactor"]
+			// txInfo_txInfo_frequency = value["txInfo_frequency"]
+
 			fmt.Printf("Frame Count: %v\n", fCnt)
 
 			// API
 			c.JSON(http.StatusOK, gin.H{
 				"fCnt": fCnt,
+				"data_ad": data_ad,
+				"data_boardVoltage": data_boardVoltage,
+				"data_counter" : data_counter,
+				"data_counter_0d_0" : data_counter_0d_0,
+				"data_counter_0d_1" : data_counter_0d_1,
+				"data_counter_0d_2" : data_counter_0d_2,
+				"data_counter_4_20": data_counter_4_20,
+				"data_distance": data_distance,
+				"data_humidity" : data_humidity,
+				"data_lat" : data_lat,
+				"data_lon" : data_lon,
+				"data_temperature" : data_temperature,
 			})
 		}
 
