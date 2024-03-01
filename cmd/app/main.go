@@ -60,12 +60,11 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		
-		
+
 		for iterator.Next() {
 			value := iterator.Value()
 			fmt.Printf("\nvalue: %v\n", value)
-		
+
 			fCnt := value["fCnt"]
 			data_ad := value["data_ad"]
 			data_boardVoltage := value["data_boardVoltage"]
@@ -101,36 +100,36 @@ func main() {
 
 			// API
 			c.JSON(http.StatusOK, gin.H{
-				"fCnt": fCnt,
-				"data_ad": data_ad,
-				"data_boardVoltage": data_boardVoltage,
-				"data_counter" : data_counter,
-				"data_counter_0d_0" : data_counter_0d_0,
-				"data_counter_0d_1" : data_counter_0d_1,
-				"data_counter_0d_2" : data_counter_0d_2,
-				"data_counter_4_20": data_counter_4_20,
-				"data_distance": data_distance,
-				"data_humidity" : data_humidity,
-				"data_lat" : data_lat,
-				"data_lon" : data_lon,
-				"data_temperature" : data_temperature,
-				"rxInfo_altitude_0" : rxInfo_altitude_0,
-				"rxInfo_altitude_1" : rxInfo_altitude_1,
-				"rxInfo_altitude_2" : rxInfo_altitude_2,
-				"rxInfo_latitude_0" : rxInfo_latitude_0,
-				"rxInfo_latitude_1" : rxInfo_latitude_1,
-				"rxInfo_latitude_2" : rxInfo_latitude_2,
-				"rxInfo_loRaSNR_0" : rxInfo_loRaSNR_0,
-				"rxInfo_loRaSNR_1" : rxInfo_loRaSNR_1,
-				"rxInfo_loRaSNR_2" : rxInfo_loRaSNR_2,
-				"rxInfo_longitude_0" : rxInfo_longitude_0,
-				"rxInfo_longitude_1" : rxInfo_longitude_1,
-				"rxInfo_longitude_2" : rxInfo_longitude_2,
-				"rxInfo_rssi_0" : rxInfo_rssi_0,
-				"rxInfo_rssi_1" : rxInfo_rssi_1,
-				"rxInfo_rssi_2" : rxInfo_rssi_2,
-				"txInfo_dataRate_spreadFactor" : txInfo_dataRate_spreadFactor,
-				"txInfo_frequency" : txInfo_frequency,
+				"fCnt":                         fCnt,
+				"data_ad":                      data_ad,
+				"data_boardVoltage":            data_boardVoltage,
+				"data_counter":                 data_counter,
+				"data_counter_0d_0":            data_counter_0d_0,
+				"data_counter_0d_1":            data_counter_0d_1,
+				"data_counter_0d_2":            data_counter_0d_2,
+				"data_counter_4_20":            data_counter_4_20,
+				"data_distance":                data_distance,
+				"data_humidity":                data_humidity,
+				"data_lat":                     data_lat,
+				"data_lon":                     data_lon,
+				"data_temperature":             data_temperature,
+				"rxInfo_altitude_0":            rxInfo_altitude_0,
+				"rxInfo_altitude_1":            rxInfo_altitude_1,
+				"rxInfo_altitude_2":            rxInfo_altitude_2,
+				"rxInfo_latitude_0":            rxInfo_latitude_0,
+				"rxInfo_latitude_1":            rxInfo_latitude_1,
+				"rxInfo_latitude_2":            rxInfo_latitude_2,
+				"rxInfo_loRaSNR_0":             rxInfo_loRaSNR_0,
+				"rxInfo_loRaSNR_1":             rxInfo_loRaSNR_1,
+				"rxInfo_loRaSNR_2":             rxInfo_loRaSNR_2,
+				"rxInfo_longitude_0":           rxInfo_longitude_0,
+				"rxInfo_longitude_1":           rxInfo_longitude_1,
+				"rxInfo_longitude_2":           rxInfo_longitude_2,
+				"rxInfo_rssi_0":                rxInfo_rssi_0,
+				"rxInfo_rssi_1":                rxInfo_rssi_1,
+				"rxInfo_rssi_2":                rxInfo_rssi_2,
+				"txInfo_dataRate_spreadFactor": txInfo_dataRate_spreadFactor,
+				"txInfo_frequency":             txInfo_frequency,
 			})
 		}
 
