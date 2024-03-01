@@ -79,23 +79,23 @@ func main() {
 			data_lat := value["data_lat"]
 			data_lon := value["data_lon"]
 			data_temperature := value["data_temperature"]
-			// rxInfo_altitude_0 := value["rxInfo.altitude_0"]
-			// rxInfo_altitude_1 := value["rxInfo.altitude_1"]
-			// rxInfo_altitude_2 := value["rxInfo.altitude_2"]
-			// rxInfo_latitude_0 := value["rxInfo.latitude_0"]
-			// rxInfo_latitude_1 := value["rxInfo.latitude_1"]
-			// rxInfo_latitude_2 := value["rxInfo.latitude_2"]
-			// rxInfo_loRaSNR_0 := value["rxInfo.loRaSNR_0"]
-			// rxInfo_loRaSNR_1 := value["rxInfo.loRaSNR_1"]
-			// rxInfo_loRaSNR_2 := value["rxInfo.loRaSNR_2"]
-			// rxInfo_longitude_0 := value["rxInfo.longitude_0"]
-			// rxInfo_longitude_1 := value["rxInfo.longitude_1"]
-			// rxInfo_longitude_2 := value["rxInfo.longitude_2"]
-			// rxInfo_rssi_0 := value["rxInfo.rssi_0"]
-			// rxInfo_rssi_1 := value["rxInfo.rssi_1"]
-			// rxInfo_rssi_2 := value["rxInfo.rssi_2"]
-			// txInfo_dataRate_spreadFactor = value["txInfo_dataRate_spreadFactor"]
-			// txInfo_txInfo_frequency = value["txInfo_frequency"]
+			rxInfo_altitude_0 := value["rxInfo.altitude_0"]
+			rxInfo_altitude_1 := value["rxInfo.altitude_1"]
+			rxInfo_altitude_2 := value["rxInfo.altitude_2"]
+			rxInfo_latitude_0 := value["rxInfo.latitude_0"]
+			rxInfo_latitude_1 := value["rxInfo.latitude_1"]
+			rxInfo_latitude_2 := value["rxInfo.latitude_2"]
+			rxInfo_loRaSNR_0 := value["rxInfo.loRaSNR_0"]
+			rxInfo_loRaSNR_1 := value["rxInfo.loRaSNR_1"]
+			rxInfo_loRaSNR_2 := value["rxInfo.loRaSNR_2"]
+			rxInfo_longitude_0 := value["rxInfo.longitude_0"]
+			rxInfo_longitude_1 := value["rxInfo.longitude_1"]
+			rxInfo_longitude_2 := value["rxInfo.longitude_2"]
+			rxInfo_rssi_0 := value["rxInfo.rssi_0"]
+			rxInfo_rssi_1 := value["rxInfo.rssi_1"]
+			rxInfo_rssi_2 := value["rxInfo.rssi_2"]
+			txInfo_dataRate_spreadFactor := value["txInfo_dataRate_spreadFactor"]
+			txInfo_frequency := value["txInfo_frequency"]
 
 			fmt.Printf("Frame Count: %v\n", fCnt)
 
@@ -114,6 +114,23 @@ func main() {
 				"data_lat" : data_lat,
 				"data_lon" : data_lon,
 				"data_temperature" : data_temperature,
+				"rxInfo_altitude_0" : rxInfo_altitude_0,
+				"rxInfo_altitude_1" : rxInfo_altitude_1,
+				"rxInfo_altitude_2" : rxInfo_altitude_2,
+				"rxInfo_latitude_0" : rxInfo_latitude_0,
+				"rxInfo_latitude_1" : rxInfo_latitude_1,
+				"rxInfo_latitude_2" : rxInfo_latitude_2,
+				"rxInfo_loRaSNR_0" : rxInfo_loRaSNR_0,
+				"rxInfo_loRaSNR_1" : rxInfo_loRaSNR_1,
+				"rxInfo_loRaSNR_2" : rxInfo_loRaSNR_2,
+				"rxInfo_longitude_0" : rxInfo_longitude_0,
+				"rxInfo_longitude_1" : rxInfo_longitude_1,
+				"rxInfo_longitude_2" : rxInfo_longitude_2,
+				"rxInfo_rssi_0" : rxInfo_rssi_0,
+				"rxInfo_rssi_1" : rxInfo_rssi_1,
+				"rxInfo_rssi_2" : rxInfo_rssi_2,
+				"txInfo_dataRate_spreadFactor" : txInfo_dataRate_spreadFactor,
+				"txInfo_frequency" : txInfo_frequency,
 			})
 		}
 
