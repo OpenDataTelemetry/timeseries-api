@@ -10,8 +10,6 @@ import (
 	// "reflect"
 )
 
-//	func getSmartLightbyID(c *gin.Context, objs map[string]interface{}){
-//		nodename := c.Param("nodename")
 var influxdb3Client *influxdb3.Client
 
 func getAllSmartLights(c *gin.Context) {
@@ -95,7 +93,6 @@ ORDER BY time DESC;
 
 func main() {
 
-	// API
 	r := gin.Default()
 	api := r.Group("/api/v0.1/smartcampusmaua")
 	{
@@ -104,6 +101,5 @@ func main() {
 
 	}
 
-	// router.GET("/SmartLights",)
 	r.Run(":8888")
 }
