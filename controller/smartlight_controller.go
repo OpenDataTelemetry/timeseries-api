@@ -58,7 +58,7 @@ func GetSmartLightbyNodeName(c *gin.Context) {
 	SELECT *
 	FROM "SmartLights"
 	WHERE "nodeName" = '` + nodename + `'
-	ORDER BY time DESC;database
+	ORDER BY time DESC;
 	`
 	iterator, err := influxDB.Query(context.Background(), query) // Create iterator from query response
 
