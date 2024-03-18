@@ -8,7 +8,7 @@ import (
 func main() {
 
 	r := gin.Default() // Create a new gin router instance
-	api := r.Group("/api/v0.1/smartcampusmaua/SmartLights")
+	api := r.Group("/api/timeseries/v0.1/smartcampusmaua/SmartLights")
 	{
 		api.GET("", controllers.GetSmartLights)
 		api.GET("deviceName/:nodename", controllers.GetSmartLightbyNodeName)
