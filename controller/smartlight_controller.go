@@ -3,18 +3,17 @@ package controller
 import (
 	"context"
 	"net/http"
-	"github.com/gin-gonic/gin"
+
 	"github.com/OpenDataTelemetry/timeseries-api/database"
-	
+	"github.com/gin-gonic/gin"
 )
 
 func GetSmartLights(c *gin.Context) {
 	interval := c.Query("interval")
 
-	
 	var objs = []gin.H{}
 	influxDB, err := database.ConnectToDB()
-	
+
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -22,11 +21,11 @@ func GetSmartLights(c *gin.Context) {
 	defer influxDB.Close()
 
 	query := `
-SELECT *
-FROM "SmartLights"
-WHERE "time" >= now() - interval '`+ interval +` minutes'
-ORDER BY time DESC;
-`
+		SELECT *
+		FROM "SmartLights"
+		WHERE "time" >= now() - interval '` + interval + ` minutes'
+		ORDER BY time DESC;
+	`
 
 	iterator, err := influxDB.Query(context.Background(), query) // Create iterator from query response
 
@@ -55,10 +54,10 @@ func GetSmartLightbyNodeName(c *gin.Context) {
 	}
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
-	SELECT *
-	FROM "SmartLights"
-	WHERE "nodeName" = '` + nodename + `'
-	ORDER BY time DESC;
+		SELECT *
+		FROM "SmartLights"
+		WHERE "nodeName" = '` + nodename + `'
+		ORDER BY time DESC;
 	`
 	iterator, err := influxDB.Query(context.Background(), query) // Create iterator from query response
 
@@ -91,10 +90,10 @@ func GetSmartLightbyDevEUI(c *gin.Context) {
 	}
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
-	SELECT *
-	FROM "SmartLights"
-	WHERE "devEUI" = '` + devEUI + `'
-	ORDER BY time DESC;
+		SELECT *
+		FROM "SmartLights"
+		WHERE "devEUI" = '` + devEUI + `'
+		ORDER BY time DESC;
 	`
 	iterator, err := influxDB.Query(context.Background(), query) // Create iterator from query response
 
