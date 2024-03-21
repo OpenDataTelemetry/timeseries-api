@@ -35,11 +35,42 @@ func GetSmartLights(c *gin.Context) {
 
 	for iterator.Next() { // Iterate over query response
 		value := iterator.Value() // Value of the current row
-		obj := gin.H(value)       // Convert the row to a gin.H map (JSON)
+		obj := gin.H{
+			"fields": gin.H{
+					"data_counter_0d_0": value["data_counter_0d_0"],
+					"data_counter_0d_1": value["data_counter_0d_1"],
+					"data_energy_0": value["data_energy_0"],
+					"data_energy_1": value["data_energy_1"],
+					"fCnt": value["fCnt"],
+					"rxInfo_altitude_0": value["rxInfo_altitude_0"],
+					"rxInfo_latitude_0": value["rxInfo_latitude_0"],
+					"rxInfo_loRaSNR_0": value["rxInfo_loRaSNR_0"],
+					"rxInfo_longitude_0": value["rxInfo_longitude_0"],
+					"rxInfo_rssi_0": value["rxInfo_rssi_0"],
+					"txInfo_dataRate_spreadFactor": value["txInfo_dataRate_spreadFactor"],
+					"txInfo_frequency": value["txInfo_frequency"],
+			},
+			"name": "SmartLights",
+			"tags": gin.H{
+					// Substitua as chaves e valores abaixo pelos valores apropriados
+					"applicationID": value["applicationID"],
+					"devEUI": value["devEUI"],
+					"fPort": value["fPort"],
+					"nodeName": value["nodeName"],
+					"rxInfo_mac_0": value["rxInfo_mac_0"],
+					"rxInfo_name_0": value["rxInfo_name_0"],
+					"txInfo_adr": "true",
+					"txInfo_codeRate": "4/5",
+					"txInfo_dataRate_bandwidth": "125",
+					"txInfo_dataRate_modulation": "LORA",
+			},
+			"timestamp": value["time"], // Substitua por value["timestamp"] se o timestamp estiver disponível no valor
+	}       
+		// "data_counter_0d_0" : value["data_counter_0d_0"]}       // Convert the row to a gin.H map (JSON)
 		objs = append(objs, obj)  // Append the row to the objs slice
 	}
-
 	c.IndentedJSON(http.StatusOK, objs)
+
 
 }
 
