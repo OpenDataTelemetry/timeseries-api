@@ -31,4 +31,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: rogeriocassares/timeseries-api:0.3.1
+          tags: rogeriocassares/timeseries-api:0.4
