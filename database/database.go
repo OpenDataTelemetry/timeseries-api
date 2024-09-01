@@ -10,16 +10,16 @@ import (
 func ConnectToDB() (*influxdb3.Client, error) {
 	url := os.Getenv("INFLUXDB_URL")
 	token := os.Getenv("INFLUXDB_TOKEN")
-	database := os.Getenv("INFLUXDB_DATABASE")
+	bucket := os.Getenv("INFLUXDB_BUCKET")
 
 	influxdb3Client, err := influxdb3.New(influxdb3.ClientConfig{
 		Host:     url,
 		Token:    token,
-		Database: database,
+		Database: bucket,
 	})
 
 	if err != nil {
-		log.Fatal("Failed to connect to database")
+		log.Fatal("Failed to connect to bucket")
 		return &influxdb3.Client{}, err
 	}
 

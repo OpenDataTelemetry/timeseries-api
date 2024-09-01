@@ -6,25 +6,23 @@ import (
 )
 
 func main() {
-
 	r := gin.Default() // Create a new gin router instance
-	api := r.Group("/api/timeseries/v0.2/smartcampusmaua")
+	api := r.Group("/api/timeseries/v0.3/IMT/LNS/")
 	{
-		api.GET("SmartLights", controller.GetSmartLights)
-		api.GET("SmartLight/deviceName/:nodename", controller.GetSmartLightbyNodeName)
-		api.GET("SmartLight/deviceId/:devEUI", controller.GetSmartLightbyDevEUI)
+		api.GET("SmartLight/all", controller.GetAllSmartLight)
+		api.GET("SmartLight/deviceId/:deviceId", controller.GetSmartLightByDeviceId)
 
-		api.GET("WaterTankLevels", controller.GetWaterTankLevel)
-		api.GET("WaterTankLevel/deviceName/:nodename", controller.GetWaterTankLevelbyNodeName)
-		api.GET("WaterTankLevel/deviceId/:devEUI", controller.GetWaterTankLevelbyDevEUI)
+		api.GET("WaterTankLevel/all", controller.GetAllWaterTankLevel)
+		api.GET("WaterTankLevel/deviceId/:deviceId", controller.GetWaterTankLevelByDeviceId)
 
-		api.GET("Hidrometer", controller.GetHidrometer)
-		api.GET("Hidrometer/deviceName/:nodename", controller.GetHidrometerbyNodeName)
-		api.GET("Hidrometer/deviceId/:devEUI", controller.GetHidrometerbyDevEUI)
+		api.GET("GaugePressure/all", controller.GetAllGaugePressure)
+		api.GET("GaugePressure/deviceId/:deviceId", controller.GetGaugePressureByDeviceId)
 
-		api.GET("ArtesianWell", controller.GetArtesianWell)
-		api.GET("ArtesianWell/deviceName/:nodename", controller.GetArtesianWellbyNodeName)
-		api.GET("ArtesianWell/deviceId/:devEUI", controller.GetArtesianWellbyDevEUI)
+		api.GET("Hydrometer/all", controller.GetAllHydrometer)
+		api.GET("Hydrometer/deviceId/:deviceId", controller.GetHydrometerByDeviceId)
+
+		api.GET("EnergyMeter/all", controller.GetAllEnergyMeter)
+		api.GET("EnergyMeter/deviceId/:deviceId", controller.GetEnergyMeterByDeviceId)
 	}
 
 	r.Run(":8888")
