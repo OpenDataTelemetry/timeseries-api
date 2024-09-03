@@ -110,7 +110,7 @@ func GetGaugePressureByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "SmartLight"
+		FROM "GaugePressure"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
 		AND

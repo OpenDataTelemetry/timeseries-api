@@ -110,7 +110,7 @@ func GetWaterTankLevelByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "SmartLight"
+		FROM "WaterTnkLevel"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
 		AND

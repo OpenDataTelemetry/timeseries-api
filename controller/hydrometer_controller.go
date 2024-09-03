@@ -109,7 +109,7 @@ func GetHydrometerByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "SmartLight"
+		FROM "Hydrometer"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
 		AND
