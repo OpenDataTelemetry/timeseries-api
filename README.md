@@ -37,3 +37,10 @@ https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/EnergyMeter/all?inte
 
 Get EnergyMeter by `deviceId`:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/EnergyMeter/deviceId/0004a30b00e96514?interval=30
+
+## WeatherStation
+Get all WeatherStation measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/WeatherStation/all?interval=30
+
+Get WeatherStation by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/WeatherStation/deviceId/f803320100028a5f?interval=30

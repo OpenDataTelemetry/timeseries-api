@@ -23,6 +23,9 @@ func main() {
 
 		api.GET("EnergyMeter/all", controller.GetAllEnergyMeter)
 		api.GET("EnergyMeter/deviceId/:deviceId", controller.GetEnergyMeterByDeviceId)
+
+		api.GET("WeatherStation/all", controller.GetAllWeatherStation)
+		api.GET("WeatherStation/deviceId/:deviceId", controller.GetWeatherStationByDeviceId)
 	}
 
 	r.Run(":8888")

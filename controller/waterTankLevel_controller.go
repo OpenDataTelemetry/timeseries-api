@@ -19,8 +19,8 @@ func GetAllWaterTankLevel(c *gin.Context) {
 		return
 	}
 
-	if interval > 400 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 400"})
+	if interval > 57600 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
 		return
 	}
 
@@ -94,8 +94,8 @@ func GetWaterTankLevelByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 400 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 400"})
+	if interval > 57600 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
 		return
 	}
 
