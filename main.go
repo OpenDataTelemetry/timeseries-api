@@ -8,11 +8,8 @@ import (
 
 func main() {
 	r := gin.Default() // Create a new gin router instance
-	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost", "http://smartcampus-k8s.maua.br"}
-	// config.AllowOrigins = []string{"http://google.com", "http://facebook.com"}
-	// config.AllowAllOrigins = true
-	r.Use(cors.New(config))
+
+	r.Use(cors.Default())
 
 	api := r.Group("/api/timeseries/v0.3/IMT/LNS/")
 	{
