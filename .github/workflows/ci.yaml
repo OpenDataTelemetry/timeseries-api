@@ -26,8 +26,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          repository: ${{ secrets.DOCKER_USERNAME }}/timeseries-api
-          tags: ${{ github.sha }}, latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/timeseries-api:${{ github.sha }}, ${{ secrets.DOCKER_USERNAME }}/timeseries-api:latest
 
   deploy:
     name: Deploy
