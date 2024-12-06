@@ -26,6 +26,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
+          push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/timeseries-api:${{ github.sha }}, ${{ secrets.DOCKERHUB_USERNAME }}/timeseries-api:latest
 
   deploy:
@@ -63,12 +64,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           $GITHUB_SHA: ${{ github.sha }}
         run: |
-          ls
-          pwd
           cd prod/k8s/open-data-telemetry/timeseries-api
-          ls
-          pwd
-          cat kustomization.yaml
           kustomize edit set image timeseries-api=$DOCKERHUB_USERNAME/timeseries-api:$GITHUB_SHA
           cat kustomization.yaml           
 
@@ -80,7 +76,7 @@ jobs:
           ls
           pwd
           cat kustomization.yaml
-          git add kustomize.yaml
+          git add kustomization.yaml
           git status
           git commit -m "rolling image to tag $GITHUB_SHA"
           git push origin main
