@@ -60,7 +60,8 @@ jobs:
 
       - name: Update Kubernetes resources
         env:
-          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          $GITHUB_SHA: ${{ github.sha }}
         run: |
           ls
           pwd
@@ -68,7 +69,8 @@ jobs:
           ls
           pwd
           cat kustomization.yaml
-          kustomize edit set image timeseries-api=$DOCKERHUB_USERNAME/timeseries-api:$GITHUB_SHA             
+          kustomize edit set image timeseries-api=$DOCKERHUB_USERNAME/timeseries-api:$GITHUB_SHA
+          cat kustomization.yaml           
 
       - name: Commit files
         env:
