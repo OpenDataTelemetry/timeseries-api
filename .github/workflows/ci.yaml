@@ -55,6 +55,8 @@ jobs:
           ls
           pwd
           cd prod/k8s/open-data-telemetry/timeseries-api
+          ls
+          pwd
           cat kustomize.yaml
 
       - name: Update Kubernetes resources
