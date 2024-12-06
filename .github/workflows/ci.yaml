@@ -52,6 +52,8 @@ jobs:
           REPO_ACCESS_TOKEN: ${{ secrets.KUBERDET_CI_TO_PROD_TOKEN }}
         run: |
           git clone https://$REPO_ACCESS_TOKEN@github.com/Kuberdet/prod.git
+          ls
+          pwd
           cd k8s/open-data-telemetry/timeseries-api
           cat kustomize.yaml
 
