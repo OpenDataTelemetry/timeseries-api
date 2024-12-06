@@ -4,11 +4,12 @@ on:
     branches:
       - develop
 jobs:
-  check-application:  
-    name: deploy-job
+  build:  
+    name: build Docker Image
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Git Checkout
+        uses: actions/checkout@v4
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -25,5 +26,62 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          push: true
-          tags: rogeriocassares/timeseries-api:0.5.3.2
+          repository: ${{ secrets.DOCKER_USERNAME }}/timeseries-api
+          tags: ${{ github.sha }}, latest
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Kustomize
+        uses: imranismail/setup-kustomize@v1
+        with:
+          kustomize-version: "3.6.1"
+
+      - name: Configurar Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Clonar repositório de manifestos
+        env:
+          REPO_ACCESS_TOKEN: ${{ secrets.KUBERDET_CI_TO_PROD_TOKEN }}
+        run: |
+          git clone https://$REPO_ACCESS_TOKEN@github.com/Kuberdet/prod.git
+          cd k8s/open-data-telemetry/timeseries-api
+          cat kustomize.yaml
+
+      - name: Update Kubernetes resources
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        run: |
+          cd k8s/open-data-telemetry/timeseries-api
+          cat kustomize.yaml
+          kustomize edit set image timeseries-api=$DOCKER_USERNAME/timeseries-api:$GITHUB_SHA             
+
+      - name: Commit files
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd k8s/open-data-telemetry/timeseries-api
+          cat kustomize.yaml
+          git add kustomize.yaml
+          git commit -m "rolling image to tag $GITHUB_SHA"
+          git push origin main
+
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: Push
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     repository: rogeriocassares/go-gitops
+
+
