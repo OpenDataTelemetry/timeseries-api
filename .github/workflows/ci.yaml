@@ -54,14 +54,14 @@ jobs:
           git clone https://$REPO_ACCESS_TOKEN@github.com/Kuberdet/prod.git
           ls
           pwd
-          cd k8s/open-data-telemetry/timeseries-api
+          cd prod/k8s/open-data-telemetry/timeseries-api
           cat kustomize.yaml
 
       - name: Update Kubernetes resources
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: |
-          cd k8s/open-data-telemetry/timeseries-api
+          cd prod/k8s/open-data-telemetry/timeseries-api
           cat kustomize.yaml
           kustomize edit set image timeseries-api=$DOCKER_USERNAME/timeseries-api:$GITHUB_SHA             
 
@@ -69,7 +69,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd k8s/open-data-telemetry/timeseries-api
+          cd prod/k8s/open-data-telemetry/timeseries-api
           cat kustomize.yaml
           git add kustomize.yaml
           git commit -m "rolling image to tag $GITHUB_SHA"
