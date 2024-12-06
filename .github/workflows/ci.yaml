@@ -52,11 +52,7 @@ jobs:
           REPO_ACCESS_TOKEN: ${{ secrets.KUBERDET_CI_TO_PROD_TOKEN }}
         run: |
           git clone https://$REPO_ACCESS_TOKEN@github.com/Kuberdet/prod.git
-          ls
-          pwd
           cd prod/k8s/open-data-telemetry/timeseries-api
-          ls
-          pwd
           cat kustomization.yaml
 
       - name: Update Kubernetes resources
@@ -73,23 +69,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd prod/k8s/open-data-telemetry/timeseries-api
-          ls
-          pwd
           cat kustomization.yaml
           git add kustomization.yaml
           git status
           git commit -m "rolling image to tag $GITHUB_SHA"
           git push origin main
-
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      # - name: Push
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     repository: rogeriocassares/go-gitops
-
-
