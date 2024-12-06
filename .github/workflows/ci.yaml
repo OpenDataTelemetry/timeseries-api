@@ -56,14 +56,18 @@ jobs:
           cd prod/k8s/open-data-telemetry/timeseries-api
           ls
           pwd
-          cat kustomize.yaml
+          cat kustomization.yaml
 
       - name: Update Kubernetes resources
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         run: |
+          ls
+          pwd
           cd prod/k8s/open-data-telemetry/timeseries-api
-          cat kustomize.yaml
+          ls
+          pwd
+          cat kustomization.yaml
           kustomize edit set image timeseries-api=$DOCKERHUB_USERNAME/timeseries-api:$GITHUB_SHA             
 
       - name: Commit files
@@ -71,8 +75,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd prod/k8s/open-data-telemetry/timeseries-api
-          cat kustomize.yaml
+          ls
+          pwd
+          cat kustomization.yaml
           git add kustomize.yaml
+          git status
           git commit -m "rolling image to tag $GITHUB_SHA"
           git push origin main
 
