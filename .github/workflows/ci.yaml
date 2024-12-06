@@ -26,7 +26,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          tags: ${{ secrets.DOCKER_USERNAME }}/timeseries-api:${{ github.sha }}, ${{ secrets.DOCKER_USERNAME }}/timeseries-api:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/timeseries-api:${{ github.sha }}, ${{ secrets.DOCKERHUB_USERNAME }}/timeseries-api:latest
 
   deploy:
     name: Deploy
@@ -60,11 +60,11 @@ jobs:
 
       - name: Update Kubernetes resources
         env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         run: |
           cd prod/k8s/open-data-telemetry/timeseries-api
           cat kustomize.yaml
-          kustomize edit set image timeseries-api=$DOCKER_USERNAME/timeseries-api:$GITHUB_SHA             
+          kustomize edit set image timeseries-api=$DOCKERHUB_USERNAME/timeseries-api:$GITHUB_SHA             
 
       - name: Commit files
         env:
