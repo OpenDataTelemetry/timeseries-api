@@ -3,9 +3,27 @@ on:
   push:
     branches:
       - develop
+
+env:
+  # DockerHub Access
+  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+  DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+  #Github Variables
+  APP_GITHUB_SHA: ${{ github.sha }}
+  APP_NAME: timeseries-api
+  APP_NAMESPACE: open-data-telemetry
+  # K8s Prod Repository Access
+  K8S_PROD_REPO_APP_NAME: $APP_NAME
+  K8S_PROD_REPO_APP_NAMESPACE: $APP_NAMESPACE
+  K8S_PROD_REPO_ACCESS_TOKEN: ${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}
+  K8S_PROD_REPO_BASE_DIR: ${{ secrets.K8S_PROD_REPO_BASE_DIR }}
+  K8S_PROD_REPO_KUSTOMIZATION_APP_DIR: ${{ secrets.K8S_PROD_REPO_BASE_DIR }}/$K8S_PROD_REPO_APP_NAMESPACE/$K8S_PROD_REPO_APP_NAME
+  K8S_PROD_REPO_URL: ${{ secrets.K8S_PROD_REPO_URL }}
+  K8S_PROD_REPO_BRANCH: ${{ secrets.K8S_PROD_REPO_BRANCH }}
+
 jobs:
   build:  
-    name: build Docker Image
+    name: Build and Push Docker Image
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout
@@ -20,14 +38,14 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_TOKEN
 
-      - name: Build and push
+      - name: Build and Push
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/timeseries-api:${{ github.sha }}, ${{ secrets.DOCKERHUB_USERNAME }}/timeseries-api:latest
+          tags: $DOCKERHUB_USERNAME/$APP_NAME:$APP_GITHUB_SHA, $DOCKERHUB_USERNAME/$APP_NAME:latest
 
   deploy:
     name: Deploy
@@ -47,30 +65,32 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
 
-      - name: Clonar repositório de manifestos
-        env:
-          REPO_ACCESS_TOKEN: ${{ secrets.KUBERDET_CI_TO_PROD_TOKEN }}
+      - name: Clone K8s Prod Repository
+        # env:
+        #   REPO_ACCESS_TOKEN: ${{ secrets.KUBERDET_CI_TO_PROD_TOKEN }}
+        #   REPO_KUSTOMIZATION_DIR: ${{ secrets.KUBERDET_KUSTOMIZATION_DIR }}
+        #   REPO_K8S: ${{ secrets.KUBERDET_REPO }}
         run: |
-          git clone https://$REPO_ACCESS_TOKEN@github.com/Kuberdet/prod.git
-          cd prod/k8s/open-data-telemetry/timeseries-api
+          git clone --single-branch --branch $K8S_PROD_REPO_BRANCH https://$K8S_PROD_REPO_ACCESS_TOKEN@$K8S_PROD_REPO_URL
+          cd $K8S_PROD_REPO_KUSTOMIZATION_APP_DIR
           cat kustomization.yaml
 
       - name: Update Kubernetes resources
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          $GITHUB_SHA: ${{ github.sha }}
+        # env:
+        #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        #   $GITHUB_SHA: ${{ github.sha }}
         run: |
-          cd prod/k8s/open-data-telemetry/timeseries-api
-          kustomize edit set image timeseries-api=$DOCKERHUB_USERNAME/timeseries-api:$GITHUB_SHA
+          cd $K8S_PROD_REPO_KUSTOMIZATION_APP_DIR
+          kustomize edit set image $APP_NAME=$DOCKERHUB_USERNAME/$APP_NAME:$APP_GITHUB_SHA
           cat kustomization.yaml           
 
       - name: Commit files
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd prod/k8s/open-data-telemetry/timeseries-api
+          cd $K8S_PROD_REPO_KUSTOMIZATION_APP_DIR
           cat kustomization.yaml
           git add kustomization.yaml
           git status
-          git commit -m "rolling image to tag $GITHUB_SHA"
-          git push origin main
+          git commit -m "rolling $APP_NAME Docker image to tag $GITHUB_SHA"
+          git push origin $K8S_PROD_REPO_BRANCH
