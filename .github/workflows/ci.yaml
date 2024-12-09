@@ -4,27 +4,17 @@ on:
     branches:
       - develop
 
-env:
-  # DockerHub Access
-  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-  DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-  #Github Variables
-  APP_GITHUB_SHA: ${{ github.sha }}
-  APP_NAME: timeseries-api
-  APP_NAMESPACE: open-data-telemetry
-  # K8s Prod Repository Access
-  K8S_PROD_REPO_APP_NAME: $APP_NAME
-  K8S_PROD_REPO_APP_NAMESPACE: $APP_NAMESPACE
-  K8S_PROD_REPO_ACCESS_TOKEN: ${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}
-  K8S_PROD_REPO_BASE_DIR: ${{ secrets.K8S_PROD_REPO_BASE_DIR }}
-  K8S_PROD_REPO_KUSTOMIZATION_APP_DIR: ${{ secrets.K8S_PROD_REPO_BASE_DIR }}/$K8S_PROD_REPO_APP_NAMESPACE/$K8S_PROD_REPO_APP_NAME
-  K8S_PROD_REPO_URL: ${{ secrets.K8S_PROD_REPO_URL }}
-  K8S_PROD_REPO_BRANCH: ${{ secrets.K8S_PROD_REPO_BRANCH }}
-
 jobs:
   build:  
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
+    env:
+      # DockerHub Access
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      #Github Variables
+      APP_GITHUB_SHA: ${{ github.sha }}
+      APP_NAME: timeseries-api
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
@@ -51,6 +41,19 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
+    env:
+       #Github Variables
+      APP_GITHUB_SHA: ${{ github.sha }}
+      APP_NAME: timeseries-api
+      APP_NAMESPACE: open-data-telemetry
+      # K8s Prod Repository Access
+      K8S_PROD_REPO_APP_NAME: $APP_NAME
+      K8S_PROD_REPO_APP_NAMESPACE: $APP_NAMESPACE
+      K8S_PROD_REPO_ACCESS_TOKEN: ${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}
+      K8S_PROD_REPO_BASE_DIR: ${{ secrets.K8S_PROD_REPO_BASE_DIR }}
+      K8S_PROD_REPO_KUSTOMIZATION_APP_DIR: ${{ secrets.K8S_PROD_REPO_BASE_DIR }}/$K8S_PROD_REPO_APP_NAMESPACE/$K8S_PROD_REPO_APP_NAME
+      K8S_PROD_REPO_URL: ${{ secrets.K8S_PROD_REPO_URL }}
+      K8S_PROD_REPO_BRANCH: ${{ secrets.K8S_PROD_REPO_BRANCH }}
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
