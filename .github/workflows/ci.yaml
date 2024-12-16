@@ -53,8 +53,9 @@ jobs:
         #   REPO_ACCESS_TOKEN: ${{ secrets.KUBERDET_CI_TO_PROD_TOKEN }}
         #   REPO_KUSTOMIZATION_DIR: ${{ secrets.KUBERDET_KUSTOMIZATION_DIR }}
         #   REPO_K8S: ${{ secrets.KUBERDET_REPO }}
+        # git clone --single-branch --branch ${{ secrets.K8S_PROD_REPO_BRANCH }} https://${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}@${{ secrets.K8S_PROD_REPO_URL }}
         run: |
-          git clone --single-branch --branch ${{ secrets.K8S_PROD_REPO_BRANCH }} https://${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}@${{ secrets.K8S_PROD_REPO_URL }}
+          git clone --single-branch --branch ${{ secrets.K8S_PROD_REPO_BRANCH }} https://${{ secrets.K8S_PROD_REPO_URL }}
           ls
           pwd
           cd ${{ secrets.K8S_PROD_REPO_BASE_DIR }}
