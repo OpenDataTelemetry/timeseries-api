@@ -37,6 +37,11 @@ jobs:
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
+        with:
+          repository: 'Kuberdet/prod'
+          ref: 'main'
+          token: ${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}
+          
 
       - name: Setup Kustomize
         uses: imranismail/setup-kustomize@v1
@@ -48,7 +53,7 @@ jobs:
           git config --global user.name "rogeriocassraes"
           git config --global user.email "roger10cassares@gmail.com"
 
-      - name: Clone K8s Prod Repository
+      # - name: Clone K8s Prod Repository
         # env:
         #   REPO_ACCESS_TOKEN: ${{ secrets.KUBERDET_CI_TO_PROD_TOKEN }}
         #   REPO_KUSTOMIZATION_DIR: ${{ secrets.KUBERDET_KUSTOMIZATION_DIR }}
@@ -67,16 +72,14 @@ jobs:
         #   ls
         #   pwd
         #   cat kustomization.yaml
-        uses: GuillaumeFalourd/clone-github-repo-action@v2.3
-        with:
-          owner: 'Kuberdet'
-          repository: 'prod'
-          access-token: ${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}
+       
 
       - name: Update Kubernetes resources
         # env:
         #   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         run: |
+          ls
+          pwd
           cd ${{ secrets.K8S_PROD_REPO_BASE_DIR }}/${{ secrets.K8S_PROD_REPO_APP_NAMESPACE }}/${{ secrets.K8S_PROD_REPO_APP_NAME }}
           kustomize edit set image ${{ secrets.APP_NAME }}=${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}:${{ github.sha }}
           cat kustomization.yaml           
