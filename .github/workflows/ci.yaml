@@ -54,19 +54,24 @@ jobs:
         #   REPO_KUSTOMIZATION_DIR: ${{ secrets.KUBERDET_KUSTOMIZATION_DIR }}
         #   REPO_K8S: ${{ secrets.KUBERDET_REPO }}
         # git clone --single-branch --branch ${{ secrets.K8S_PROD_REPO_BRANCH }} https://${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}@${{ secrets.K8S_PROD_REPO_URL }}
-        run: |
-          git clone --single-branch --branch ${{ secrets.K8S_PROD_REPO_BRANCH }} https://${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}@${{ secrets.K8S_PROD_REPO_URL }}
-          ls
-          pwd
-          cd ${{ secrets.K8S_PROD_REPO_BASE_DIR }}
-          ls
-          pwd
-          cd ${{ secrets.K8S_PROD_REPO_APP_NAMESPACE }}
-          ls
-          cd ${{ secrets.K8S_PROD_REPO_APP_NAME }}
-          ls
-          pwd
-          cat kustomization.yaml
+        # run: |
+        #   git clone --single-branch --branch ${{ secrets.K8S_PROD_REPO_BRANCH }} https://${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}@${{ secrets.K8S_PROD_REPO_URL }}
+        #   ls
+        #   pwd
+        #   cd ${{ secrets.K8S_PROD_REPO_BASE_DIR }}
+        #   ls
+        #   pwd
+        #   cd ${{ secrets.K8S_PROD_REPO_APP_NAMESPACE }}
+        #   ls
+        #   cd ${{ secrets.K8S_PROD_REPO_APP_NAME }}
+        #   ls
+        #   pwd
+        #   cat kustomization.yaml
+        uses: GuillaumeFalourd/clone-github-repo-action@v2.3
+        with:
+          owner: 'Kuberdet'
+          repository: 'prod'
+          access-token: ${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}
 
       - name: Update Kubernetes resources
         # env:
