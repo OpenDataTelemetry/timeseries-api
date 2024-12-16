@@ -37,10 +37,10 @@ jobs:
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
-        with:
-          repository: 'Kuberdet/prod'
-          ref: 'main'
-          token: ${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}
+        # with:
+        #   repository: 'Kuberdet/prod'
+        #   ref: 'main'
+        #   token: ${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}
           
 
       - name: Setup Kustomize
@@ -53,25 +53,25 @@ jobs:
           git config --global user.name "rogeriocassraes"
           git config --global user.email "roger10cassares@gmail.com"
 
-      # - name: Clone K8s Prod Repository
-        # env:
+      - name: Clone K8s Prod Repository
+        env:
         #   REPO_ACCESS_TOKEN: ${{ secrets.KUBERDET_CI_TO_PROD_TOKEN }}
         #   REPO_KUSTOMIZATION_DIR: ${{ secrets.KUBERDET_KUSTOMIZATION_DIR }}
-        #   REPO_K8S: ${{ secrets.KUBERDET_REPO }}
+          REPO_K8S: ${{ secrets.K8S_PROD_REPO_BRANCH }}
         # git clone --single-branch --branch ${{ secrets.K8S_PROD_REPO_BRANCH }} https://${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}@${{ secrets.K8S_PROD_REPO_URL }}
-        # run: |
-        #   git clone --single-branch --branch ${{ secrets.K8S_PROD_REPO_BRANCH }} https://${{ secrets.K8S_PROD_REPO_ACCESS_TOKEN }}@${{ secrets.K8S_PROD_REPO_URL }}
-        #   ls
-        #   pwd
-        #   cd ${{ secrets.K8S_PROD_REPO_BASE_DIR }}
-        #   ls
-        #   pwd
-        #   cd ${{ secrets.K8S_PROD_REPO_APP_NAMESPACE }}
-        #   ls
-        #   cd ${{ secrets.K8S_PROD_REPO_APP_NAME }}
-        #   ls
-        #   pwd
-        #   cat kustomization.yaml
+        run: |
+          git clone https://github_pat_11ALF4DHI0LaR1P5iR9zDv_eP4LU5G4EwGjIyaJbPBQjCNdOzYPk34CSEDoIiQarNjZC6EWMFRmWTTQzh@github.com/Kuberdet/prod.git
+          ls
+          pwd
+          cd ${{ secrets.K8S_PROD_REPO_BASE_DIR }}
+          ls
+          pwd
+          cd ${{ secrets.K8S_PROD_REPO_APP_NAMESPACE }}
+          ls
+          cd ${{ secrets.K8S_PROD_REPO_APP_NAME }}
+          ls
+          pwd
+          cat kustomization.yaml
        
 
       - name: Update Kubernetes resources
