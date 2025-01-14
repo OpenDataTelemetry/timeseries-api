@@ -23,7 +23,6 @@ https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/GaugePressure/all?in
 Get GaugePressure by `deviceId`:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/GaugePressure/deviceId/0004a30b00e9bed7?interval=30
 
-
 ## Hydrometer
 Get all Hydrometer measurements by last 30 minutes:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/Hydrometer/all?interval=30
@@ -44,3 +43,31 @@ https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/WeatherStation/all?i
 
 Get WeatherStation by `deviceId`:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/WeatherStation/deviceId/f803320100028a5f?interval=30
+
+## Sprinkler
+Get all Sprinkler measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/Sprinkler/all?interval=30
+
+Get Sprinkler by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/Sprinkler/deviceId/0004a30b00e94314?interval=30
+
+## SoilMoisture3DepthLevels
+Get all SoilMoisture3DepthLevels measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/SoilMoisture3DepthLevels/all?interval=30
+
+Get SoilMoisture3DepthLevels by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/SoilMoisture3DepthLevels/deviceId/0004a30b001e0b53?interval=30
+
+## LnsDownlink
+Get all LnsDownlink measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/LnsDownlink/all?interval=30
+
+Get LnsDownlink by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/LnsDownlink/deviceId/0004a30b00e94314?interval=30
+
+## Alert (TODO)
+Get all Alert measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/Alert/all?interval=30
+
+Get Alert by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/Alert/deviceId/0004a30b00e94314?interval=30
