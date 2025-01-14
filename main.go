@@ -37,11 +37,11 @@ func main() {
 		api.GET("Sprinkler/all", controller.GetAllSprinkler)
 		api.GET("Sprinkler/deviceId/:deviceId", controller.GetSprinklerByDeviceId)
 
-		// api.GET("SoilMoisture3DepthLevels/all", controller.GetAllSoilMoisture3DepthLevels)
-		// api.GET("SoilMoisture3DepthLevels/deviceId/:deviceId", controller.GetSoilMoisture3DepthLevelsByDeviceId)
+		api.GET("SoilMoisture3DepthLevels/all", controller.GetAllSoilMoisture3DepthLevels)
+		api.GET("SoilMoisture3DepthLevels/deviceId/:deviceId", controller.GetSoilMoisture3DepthLevelsByDeviceId)
 
-		// api.GET("LnsDownlink/all", controller.GetAllLnsDownlink)
-		// api.GET("LnsDownlink/deviceId/:deviceId", controller.GetLnsDownlinkByDeviceId)
+		api.GET("LnsDownlink/all", controller.GetAllLnsDownlink)
+		api.GET("LnsDownlink/deviceId/:deviceId", controller.GetLnsDownlinkByDeviceId)
 
 		// api.GET("Alert/all", controller.GetAllAlert)
 		// api.GET("Alert/deviceId/:deviceId", controller.GetAlertByDeviceId)
