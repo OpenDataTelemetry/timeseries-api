@@ -31,9 +31,6 @@ func main() {
 		api.GET("WeatherStation/all", controller.GetAllWeatherStation)
 		api.GET("WeatherStation/deviceId/:deviceId", controller.GetWeatherStationByDeviceId)
 
-		api.GET("WeatherStation/all", controller.GetAllWeatherStation)
-		api.GET("WeatherStation/deviceId/:deviceId", controller.GetWeatherStationByDeviceId)
-
 		api.GET("Sprinkler/all", controller.GetAllSprinkler)
 		api.GET("Sprinkler/deviceId/:deviceId", controller.GetSprinklerByDeviceId)
 
