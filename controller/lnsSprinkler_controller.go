@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetAllHydrometer(c *gin.Context) {
+func GetAllLnsSprinkler(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -35,7 +35,7 @@ func GetAllHydrometer(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "Hydrometer"
+		FROM "Sprinkler"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
 		ORDER BY time DESC;
 	`
@@ -50,6 +50,9 @@ func GetAllHydrometer(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
+				"solenoid1":      value["solenoid1"],
+				"solenoid2":      value["solenoid2"],
+				"solenoid3":      value["solenoid3"],
 				"counter":        value["counter"],
 				"boardVoltage":   value["boardVoltage"],
 				"data":           value["data"],
@@ -64,7 +67,7 @@ func GetAllHydrometer(c *gin.Context) {
 				"txFrequency":    value["txFrequency"],
 				"txSpreadFactor": value["txSpreadFactor"],
 			},
-			"name": "Hydrometer",
+			"name": "Sprinkler",
 			"tags": gin.H{
 				"deviceId":   value["deviceId"],
 				"deviceType": value["deviceType"],
@@ -77,14 +80,15 @@ func GetAllHydrometer(c *gin.Context) {
 				"type": value["type"],
 			},
 			"timestamp": value["time"],
-		} // Convert the row to a gin.H map (JSON)
+		}
+		// Convert the row to a gin.H map (JSON)
 		objs = append(objs, obj) // Append the row to the objs slice
 	}
 	fmt.Println(len(objs))
 	c.IndentedJSON(http.StatusOK, objs)
 }
 
-func GetHydrometerByDeviceId(c *gin.Context) {
+func GetLnsSprinklerByDeviceId(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -109,7 +113,7 @@ func GetHydrometerByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "Hydrometer"
+		FROM "Sprinkler"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
 		AND
@@ -126,6 +130,9 @@ func GetHydrometerByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
+				"solenoid1":      value["solenoid1"],
+				"solenoid2":      value["solenoid2"],
+				"solenoid3":      value["solenoid3"],
 				"counter":        value["counter"],
 				"boardVoltage":   value["boardVoltage"],
 				"data":           value["data"],
@@ -140,7 +147,7 @@ func GetHydrometerByDeviceId(c *gin.Context) {
 				"txFrequency":    value["txFrequency"],
 				"txSpreadFactor": value["txSpreadFactor"],
 			},
-			"name": "Hydrometer",
+			"name": "Sprinkler",
 			"tags": gin.H{
 				"deviceId":   value["deviceId"],
 				"deviceType": value["deviceType"],
@@ -153,7 +160,7 @@ func GetHydrometerByDeviceId(c *gin.Context) {
 				"type": value["type"],
 			},
 			"timestamp": value["time"],
-		} // Convert the row to a gin.H map (JSON)
+		}
 		objs = append(objs, obj)
 	}
 	if len(objs) == 0 {

@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetAllEnergyMeter(c *gin.Context) {
+func GetAllLnsWaterTankLevel(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -35,7 +35,7 @@ func GetAllEnergyMeter(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "EnergyMeter"
+		FROM "WaterTankLevel"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
 		ORDER BY time DESC;
 	`
@@ -50,8 +50,7 @@ func GetAllEnergyMeter(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
-				"forwardEnergy":  value["forwardEnergy"],
-				"reverseEnergy":  value["reverseEnergy"],
+				"distance":       value["distance"],
 				"boardVoltage":   value["boardVoltage"],
 				"data":           value["data"],
 				"fCnt":           value["fCnt"],
@@ -65,7 +64,7 @@ func GetAllEnergyMeter(c *gin.Context) {
 				"txFrequency":    value["txFrequency"],
 				"txSpreadFactor": value["txSpreadFactor"],
 			},
-			"name": "EnergyMeter",
+			"name": "WaterTankLevel",
 			"tags": gin.H{
 				"deviceId":   value["deviceId"],
 				"deviceType": value["deviceType"],
@@ -86,7 +85,7 @@ func GetAllEnergyMeter(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, objs)
 }
 
-func GetEnergyMeterByDeviceId(c *gin.Context) {
+func GetLnsWaterTankLevelByDeviceId(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -111,14 +110,13 @@ func GetEnergyMeterByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "EnergyMeter"
+		FROM "WaterTankLevel"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
 		AND
 		"deviceId" IN ('` + deviceId + `')
 		ORDER BY time DESC;
 	`
-
 	iterator, err := influxDB.Query(context.Background(), query) // Create iterator from query response
 
 	if err != nil {
@@ -129,8 +127,7 @@ func GetEnergyMeterByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
-				"forwardEnergy":  value["forwardEnergy"],
-				"reverseEnergy":  value["reverseEnergy"],
+				"distance":       value["distance"],
 				"boardVoltage":   value["boardVoltage"],
 				"data":           value["data"],
 				"fCnt":           value["fCnt"],
@@ -144,7 +141,7 @@ func GetEnergyMeterByDeviceId(c *gin.Context) {
 				"txFrequency":    value["txFrequency"],
 				"txSpreadFactor": value["txSpreadFactor"],
 			},
-			"name": "EnergyMeter",
+			"name": "WaterTankLevel",
 			"tags": gin.H{
 				"deviceId":   value["deviceId"],
 				"deviceType": value["deviceType"],

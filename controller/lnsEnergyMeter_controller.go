@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetAllSoilMoisture3DepthLevels(c *gin.Context) {
+func GetAllLnsEnergyMeter(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -35,7 +35,7 @@ func GetAllSoilMoisture3DepthLevels(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "SoilMoisture3DepthLevels"
+		FROM "EnergyMeter"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
 		ORDER BY time DESC;
 	`
@@ -50,23 +50,22 @@ func GetAllSoilMoisture3DepthLevels(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
-				"soilMoistureDepthLevel1": value["soilMoistureDepthLevel1"],
-				"soilMoistureDepthLevel2": value["soilMoistureDepthLevel2"],
-				"soilMoistureDepthLevel3": value["soilMoistureDepthLevel3"],
-				"boardVoltage":            value["boardVoltage"],
-				"data":                    value["data"],
-				"fCnt":                    value["fCnt"],
-				"fPort":                   value["fPort"],
-				"rxAlt_0":                 value["rxAlt_0"],
-				"rxLat_0":                 value["rxLat_0"],
-				"rxLon_0":                 value["rxLon_0"],
-				"rxRssi_0":                value["rxRssi_0"],
-				"rxSnr_0":                 value["rxSnr_0"],
-				"txBandWidth":             value["txBandWidth"],
-				"txFrequency":             value["txFrequency"],
-				"txSpreadFactor":          value["txSpreadFactor"],
+				"forwardEnergy":  value["forwardEnergy"],
+				"reverseEnergy":  value["reverseEnergy"],
+				"boardVoltage":   value["boardVoltage"],
+				"data":           value["data"],
+				"fCnt":           value["fCnt"],
+				"fPort":          value["fPort"],
+				"rxAlt_0":        value["rxAlt_0"],
+				"rxLat_0":        value["rxLat_0"],
+				"rxLon_0":        value["rxLon_0"],
+				"rxRssi_0":       value["rxRssi_0"],
+				"rxSnr_0":        value["rxSnr_0"],
+				"txBandWidth":    value["txBandWidth"],
+				"txFrequency":    value["txFrequency"],
+				"txSpreadFactor": value["txSpreadFactor"],
 			},
-			"name": "SoilMoisture3DepthLevels",
+			"name": "EnergyMeter",
 			"tags": gin.H{
 				"deviceId":   value["deviceId"],
 				"deviceType": value["deviceType"],
@@ -87,7 +86,7 @@ func GetAllSoilMoisture3DepthLevels(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, objs)
 }
 
-func GetSoilMoisture3DepthLevelsByDeviceId(c *gin.Context) {
+func GetLnsEnergyMeterByDeviceId(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -112,13 +111,14 @@ func GetSoilMoisture3DepthLevelsByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "SoilMoisture3DepthLevels"
+		FROM "EnergyMeter"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
 		AND
 		"deviceId" IN ('` + deviceId + `')
 		ORDER BY time DESC;
 	`
+
 	iterator, err := influxDB.Query(context.Background(), query) // Create iterator from query response
 
 	if err != nil {
@@ -129,23 +129,22 @@ func GetSoilMoisture3DepthLevelsByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
-				"soilMoistureDepthLevel1": value["soilMoistureDepthLevel1"],
-				"soilMoistureDepthLevel2": value["soilMoistureDepthLevel2"],
-				"soilMoistureDepthLevel3": value["soilMoistureDepthLevel3"],
-				"boardVoltage":            value["boardVoltage"],
-				"data":                    value["data"],
-				"fCnt":                    value["fCnt"],
-				"fPort":                   value["fPort"],
-				"rxAlt_0":                 value["rxAlt_0"],
-				"rxLat_0":                 value["rxLat_0"],
-				"rxLon_0":                 value["rxLon_0"],
-				"rxRssi_0":                value["rxRssi_0"],
-				"rxSnr_0":                 value["rxSnr_0"],
-				"txBandWidth":             value["txBandWidth"],
-				"txFrequency":             value["txFrequency"],
-				"txSpreadFactor":          value["txSpreadFactor"],
+				"forwardEnergy":  value["forwardEnergy"],
+				"reverseEnergy":  value["reverseEnergy"],
+				"boardVoltage":   value["boardVoltage"],
+				"data":           value["data"],
+				"fCnt":           value["fCnt"],
+				"fPort":          value["fPort"],
+				"rxAlt_0":        value["rxAlt_0"],
+				"rxLat_0":        value["rxLat_0"],
+				"rxLon_0":        value["rxLon_0"],
+				"rxRssi_0":       value["rxRssi_0"],
+				"rxSnr_0":        value["rxSnr_0"],
+				"txBandWidth":    value["txBandWidth"],
+				"txFrequency":    value["txFrequency"],
+				"txSpreadFactor": value["txSpreadFactor"],
 			},
-			"name": "SoilMoisture3DepthLevels",
+			"name": "EnergyMeter",
 			"tags": gin.H{
 				"deviceId":   value["deviceId"],
 				"deviceType": value["deviceType"],

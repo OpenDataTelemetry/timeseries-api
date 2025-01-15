@@ -11,37 +11,43 @@ func main() {
 
 	r.Use(cors.Default())
 
-	api := r.Group("/api/timeseries/v0.3/IMT/LNS/")
+	api := r.Group("/api/timeseries/v0.3/IMT/")
 	{
-		api.GET("SmartLight/all", controller.GetAllSmartLight)
-		api.GET("SmartLight/deviceId/:deviceId", controller.GetSmartLightByDeviceId)
+		api.GET("LNS/SmartLight/all", controller.GetAllLnsSmartLight)
+		api.GET("LNS/SmartLight/deviceId/:deviceId", controller.GetLnsSmartLightByDeviceId)
 
-		api.GET("WaterTankLevel/all", controller.GetAllWaterTankLevel)
-		api.GET("WaterTankLevel/deviceId/:deviceId", controller.GetWaterTankLevelByDeviceId)
+		api.GET("LNS/WaterTankLevel/all", controller.GetAllLnsWaterTankLevel)
+		api.GET("LNS/WaterTankLevel/deviceId/:deviceId", controller.GetLnsWaterTankLevelByDeviceId)
 
-		api.GET("GaugePressure/all", controller.GetAllGaugePressure)
-		api.GET("GaugePressure/deviceId/:deviceId", controller.GetGaugePressureByDeviceId)
+		api.GET("LNS/GaugePressure/all", controller.GetAllLnsGaugePressure)
+		api.GET("LNS/GaugePressure/deviceId/:deviceId", controller.GetLnsGaugePressureByDeviceId)
 
-		api.GET("Hydrometer/all", controller.GetAllHydrometer)
-		api.GET("Hydrometer/deviceId/:deviceId", controller.GetHydrometerByDeviceId)
+		api.GET("LNS/Hydrometer/all", controller.GetAllLnsHydrometer)
+		api.GET("LNS/Hydrometer/deviceId/:deviceId", controller.GetLnsHydrometerByDeviceId)
 
-		api.GET("EnergyMeter/all", controller.GetAllEnergyMeter)
-		api.GET("EnergyMeter/deviceId/:deviceId", controller.GetEnergyMeterByDeviceId)
+		api.GET("LNS/EnergyMeter/all", controller.GetAllLnsEnergyMeter)
+		api.GET("LNS/EnergyMeter/deviceId/:deviceId", controller.GetLnsEnergyMeterByDeviceId)
 
-		api.GET("WeatherStation/all", controller.GetAllWeatherStation)
-		api.GET("WeatherStation/deviceId/:deviceId", controller.GetWeatherStationByDeviceId)
+		api.GET("LNS/WeatherStation/all", controller.GetAllLnsWeatherStation)
+		api.GET("LNS/WeatherStation/deviceId/:deviceId", controller.GetLnsWeatherStationByDeviceId)
 
-		api.GET("Sprinkler/all", controller.GetAllSprinkler)
-		api.GET("Sprinkler/deviceId/:deviceId", controller.GetSprinklerByDeviceId)
+		api.GET("LNS/Sprinkler/all", controller.GetAllLnsSprinkler)
+		api.GET("LNS/Sprinkler/deviceId/:deviceId", controller.GetLnsSprinklerByDeviceId)
 
-		api.GET("SoilMoisture3DepthLevels/all", controller.GetAllSoilMoisture3DepthLevels)
-		api.GET("SoilMoisture3DepthLevels/deviceId/:deviceId", controller.GetSoilMoisture3DepthLevelsByDeviceId)
+		api.GET("LNS/SoilMoisture3DepthLevels/all", controller.GetAllLnsSoilMoisture3DepthLevels)
+		api.GET("LNS/SoilMoisture3DepthLevels/deviceId/:deviceId", controller.GetLnsSoilMoisture3DepthLevelsByDeviceId)
 
-		api.GET("LnsDownlink/all", controller.GetAllLnsDownlink)
-		api.GET("LnsDownlink/deviceId/:deviceId", controller.GetLnsDownlinkByDeviceId)
+		api.GET("LNS/Downlink/all", controller.GetAllLnsDownlink)
+		api.GET("LNS/Downlink/deviceId/:deviceId", controller.GetLnsDownlinkByDeviceId)
 
-		// api.GET("Alert/all", controller.GetAllAlert)
-		// api.GET("Alert/deviceId/:deviceId", controller.GetAlertByDeviceId)
+		api.GET("LNS/Alert/all", controller.GetAllLnsAlert)
+		api.GET("LNS/Alert/deviceId/:deviceId", controller.GetLnsAlertByDeviceId)
+
+		api.GET("NSPI/GenericJson/all", controller.GetAllNspiGenericJson)
+		api.GET("NSPI/GenericJson/deviceId/:deviceId", controller.GetNspiGenericJsonByDeviceId)
+
+		api.GET("NSPI/Alert/all", controller.GetAllNspiAlert)
+		api.GET("NSPI/Alert/deviceId/:deviceId", controller.GetNspiAlertByDeviceId)
 
 	}
 

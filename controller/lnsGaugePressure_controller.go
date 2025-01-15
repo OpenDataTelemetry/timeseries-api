@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetAllGaugePressure(c *gin.Context) {
+func GetAllLnsGaugePressure(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -85,7 +85,7 @@ func GetAllGaugePressure(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, objs)
 }
 
-func GetGaugePressureByDeviceId(c *gin.Context) {
+func GetLnsGaugePressureByDeviceId(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 

@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetAllSmartLight(c *gin.Context) {
+func GetAllLnsAlert(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -35,7 +35,7 @@ func GetAllSmartLight(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "SmartLight"
+		FROM "LnsAlert"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
 		ORDER BY time DESC;
 	`
@@ -50,35 +50,11 @@ func GetAllSmartLight(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
-				"temperature":    value["temperature"],
-				"humidity":       value["humidity"],
-				"movement":       value["movement"],
-				"luminosity":     value["luminosity"],
-				"batteryVoltage": value["batteryVoltage"],
-				"boardVoltage":   value["boardVoltage"],
-				"data":           value["data"],
-				"fCnt":           value["fCnt"],
-				"fPort":          value["fPort"],
-				"rxAlt_0":        value["rxAlt_0"],
-				"rxLat_0":        value["rxLat_0"],
-				"rxLon_0":        value["rxLon_0"],
-				"rxRssi_0":       value["rxRssi_0"],
-				"rxSnr_0":        value["rxSnr_0"],
-				"txBandWidth":    value["txBandWidth"],
-				"txFrequency":    value["txFrequency"],
-				"txSpreadFactor": value["txSpreadFactor"],
+				"data": value["data"],
 			},
-			"name": "SmartLight",
+			"name": "LnsAlert",
 			"tags": gin.H{
-				"deviceId":   value["deviceId"],
-				"deviceType": value["deviceType"],
-				"direction":  value["direction"],
-				"host":       value["host"],
-				"origin":     value["origin"],
-				"rxMac_0":    value["rxMac_0"],
-				// "txCodeRate":   value["txCodeRate"],
-				// "txModulation": value["txModulation"],
-				"type": value["type"],
+				"deviceId": value["deviceId"],
 			},
 			"timestamp": value["time"],
 		}
@@ -89,7 +65,7 @@ func GetAllSmartLight(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, objs)
 }
 
-func GetSmartLightByDeviceId(c *gin.Context) {
+func GetLnsAlertByDeviceId(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -114,14 +90,13 @@ func GetSmartLightByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "SmartLight"
+		FROM "LnsAlert"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
 		AND
 		"deviceId" IN ('` + deviceId + `')
 		ORDER BY time DESC;
 	`
-
 	iterator, err := influxDB.Query(context.Background(), query) // Create iterator from query response
 
 	if err != nil {
@@ -132,35 +107,11 @@ func GetSmartLightByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
-				"temperature":    value["temperature"],
-				"humidity":       value["humidity"],
-				"movement":       value["movement"],
-				"luminosity":     value["luminosity"],
-				"batteryVoltage": value["batteryVoltage"],
-				"boardVoltage":   value["boardVoltage"],
-				"data":           value["data"],
-				"fCnt":           value["fCnt"],
-				"fPort":          value["fPort"],
-				"rxAlt_0":        value["rxAlt_0"],
-				"rxLat_0":        value["rxLat_0"],
-				"rxLon_0":        value["rxLon_0"],
-				"rxRssi_0":       value["rxRssi_0"],
-				"rxSnr_0":        value["rxSnr_0"],
-				"txBandWidth":    value["txBandWidth"],
-				"txFrequency":    value["txFrequency"],
-				"txSpreadFactor": value["txSpreadFactor"],
+				"data": value["data"],
 			},
-			"name": "SmartLight",
+			"name": "LnsAlert",
 			"tags": gin.H{
-				"deviceId":   value["deviceId"],
-				"deviceType": value["deviceType"],
-				"direction":  value["direction"],
-				"host":       value["host"],
-				"origin":     value["origin"],
-				"rxMac_0":    value["rxMac_0"],
-				// "txCodeRate":   value["txCodeRate"],
-				// "txModulation": value["txModulation"],
-				"type": value["type"],
+				"deviceId": value["deviceId"],
 			},
 			"timestamp": value["time"],
 		}

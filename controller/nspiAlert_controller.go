@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetAllSprinkler(c *gin.Context) {
+func GetAllNspiAlert(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -35,7 +35,7 @@ func GetAllSprinkler(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "Sprinkler"
+		FROM "NspiAlert"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
 		ORDER BY time DESC;
 	`
@@ -50,34 +50,11 @@ func GetAllSprinkler(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
-				"solenoid1":      value["solenoid1"],
-				"solenoid2":      value["solenoid2"],
-				"solenoid3":      value["solenoid3"],
-				"counter":        value["counter"],
-				"boardVoltage":   value["boardVoltage"],
-				"data":           value["data"],
-				"fCnt":           value["fCnt"],
-				"fPort":          value["fPort"],
-				"rxAlt_0":        value["rxAlt_0"],
-				"rxLat_0":        value["rxLat_0"],
-				"rxLon_0":        value["rxLon_0"],
-				"rxRssi_0":       value["rxRssi_0"],
-				"rxSnr_0":        value["rxSnr_0"],
-				"txBandWidth":    value["txBandWidth"],
-				"txFrequency":    value["txFrequency"],
-				"txSpreadFactor": value["txSpreadFactor"],
+				"data": value["data"],
 			},
-			"name": "Sprinkler",
+			"name": "NspiAlert",
 			"tags": gin.H{
-				"deviceId":   value["deviceId"],
-				"deviceType": value["deviceType"],
-				"direction":  value["direction"],
-				"host":       value["host"],
-				"origin":     value["origin"],
-				"rxMac_0":    value["rxMac_0"],
-				// "txCodeRate":   value["txCodeRate"],
-				// "txModulation": value["txModulation"],
-				"type": value["type"],
+				"deviceId": value["deviceId"],
 			},
 			"timestamp": value["time"],
 		}
@@ -88,7 +65,7 @@ func GetAllSprinkler(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, objs)
 }
 
-func GetSprinklerByDeviceId(c *gin.Context) {
+func GetNspiAlertByDeviceId(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -113,7 +90,7 @@ func GetSprinklerByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "Sprinkler"
+		FROM "NspiAlert"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
 		AND
@@ -130,34 +107,11 @@ func GetSprinklerByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
-				"solenoid1":      value["solenoid1"],
-				"solenoid2":      value["solenoid2"],
-				"solenoid3":      value["solenoid3"],
-				"counter":        value["counter"],
-				"boardVoltage":   value["boardVoltage"],
-				"data":           value["data"],
-				"fCnt":           value["fCnt"],
-				"fPort":          value["fPort"],
-				"rxAlt_0":        value["rxAlt_0"],
-				"rxLat_0":        value["rxLat_0"],
-				"rxLon_0":        value["rxLon_0"],
-				"rxRssi_0":       value["rxRssi_0"],
-				"rxSnr_0":        value["rxSnr_0"],
-				"txBandWidth":    value["txBandWidth"],
-				"txFrequency":    value["txFrequency"],
-				"txSpreadFactor": value["txSpreadFactor"],
+				"data": value["data"],
 			},
-			"name": "Sprinkler",
+			"name": "NspiAlert",
 			"tags": gin.H{
-				"deviceId":   value["deviceId"],
-				"deviceType": value["deviceType"],
-				"direction":  value["direction"],
-				"host":       value["host"],
-				"origin":     value["origin"],
-				"rxMac_0":    value["rxMac_0"],
-				// "txCodeRate":   value["txCodeRate"],
-				// "txModulation": value["txModulation"],
-				"type": value["type"],
+				"deviceId": value["deviceId"],
 			},
 			"timestamp": value["time"],
 		}

@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetAllWeatherStation(c *gin.Context) {
+func GetAllLnsWeatherStation(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -103,7 +103,7 @@ func GetAllWeatherStation(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, objs)
 }
 
-func GetWeatherStationByDeviceId(c *gin.Context) {
+func GetLnsWeatherStationByDeviceId(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 

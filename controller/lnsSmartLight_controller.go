@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetAllWaterTankLevel(c *gin.Context) {
+func GetAllLnsSmartLight(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -35,7 +35,7 @@ func GetAllWaterTankLevel(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "WaterTankLevel"
+		FROM "SmartLight"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
 		ORDER BY time DESC;
 	`
@@ -50,7 +50,11 @@ func GetAllWaterTankLevel(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
-				"distance":       value["distance"],
+				"temperature":    value["temperature"],
+				"humidity":       value["humidity"],
+				"movement":       value["movement"],
+				"luminosity":     value["luminosity"],
+				"batteryVoltage": value["batteryVoltage"],
 				"boardVoltage":   value["boardVoltage"],
 				"data":           value["data"],
 				"fCnt":           value["fCnt"],
@@ -64,7 +68,7 @@ func GetAllWaterTankLevel(c *gin.Context) {
 				"txFrequency":    value["txFrequency"],
 				"txSpreadFactor": value["txSpreadFactor"],
 			},
-			"name": "WaterTankLevel",
+			"name": "SmartLight",
 			"tags": gin.H{
 				"deviceId":   value["deviceId"],
 				"deviceType": value["deviceType"],
@@ -85,7 +89,7 @@ func GetAllWaterTankLevel(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, objs)
 }
 
-func GetWaterTankLevelByDeviceId(c *gin.Context) {
+func GetLnsSmartLightByDeviceId(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -110,13 +114,14 @@ func GetWaterTankLevelByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "WaterTankLevel"
+		FROM "SmartLight"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
 		AND
 		"deviceId" IN ('` + deviceId + `')
 		ORDER BY time DESC;
 	`
+
 	iterator, err := influxDB.Query(context.Background(), query) // Create iterator from query response
 
 	if err != nil {
@@ -127,7 +132,11 @@ func GetWaterTankLevelByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
-				"distance":       value["distance"],
+				"temperature":    value["temperature"],
+				"humidity":       value["humidity"],
+				"movement":       value["movement"],
+				"luminosity":     value["luminosity"],
+				"batteryVoltage": value["batteryVoltage"],
 				"boardVoltage":   value["boardVoltage"],
 				"data":           value["data"],
 				"fCnt":           value["fCnt"],
@@ -141,7 +150,7 @@ func GetWaterTankLevelByDeviceId(c *gin.Context) {
 				"txFrequency":    value["txFrequency"],
 				"txSpreadFactor": value["txSpreadFactor"],
 			},
-			"name": "WaterTankLevel",
+			"name": "SmartLight",
 			"tags": gin.H{
 				"deviceId":   value["deviceId"],
 				"deviceType": value["deviceType"],
