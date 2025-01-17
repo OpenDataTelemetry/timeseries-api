@@ -37,8 +37,8 @@ func main() {
 		api.GET("LNS/SoilMoisture3DepthLevels/all", controller.GetAllLnsSoilMoisture3DepthLevels)
 		api.GET("LNS/SoilMoisture3DepthLevels/deviceId/:deviceId", controller.GetLnsSoilMoisture3DepthLevelsByDeviceId)
 
-		api.GET("LNS/Downlink/all", controller.GetAllLnsDownlink)
-		api.GET("LNS/Downlink/deviceId/:deviceId", controller.GetLnsDownlinkByDeviceId)
+		api.GET("LNS/Command/all", controller.GetAllLnsCommand)
+		api.GET("LNS/Command/deviceId/:deviceId", controller.GetLnsCommandByDeviceId)
 
 		api.GET("LNS/Alert/all", controller.GetAllLnsAlert)
 		api.GET("LNS/Alert/deviceId/:deviceId", controller.GetLnsAlertByDeviceId)

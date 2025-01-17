@@ -35,8 +35,10 @@ func GetAllNspiGenericJson(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "NspiGenericJson"
+		FROM "GenericJson"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
+		AND
+		"deviceType" IN ('NSPI')
 		ORDER BY time DESC;
 	`
 
@@ -52,9 +54,10 @@ func GetAllNspiGenericJson(c *gin.Context) {
 			"fields": gin.H{
 				"data": value["data"],
 			},
-			"name": "NspiGenericJson",
+			"name": "GenericJson",
 			"tags": gin.H{
-				"deviceId": value["deviceId"],
+				"deviceId":   value["deviceId"],
+				"deviceType": value["deviceType"],
 			},
 			"timestamp": value["time"],
 		}
@@ -90,11 +93,13 @@ func GetNspiGenericJsonByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "NspiGenericJson"
+		FROM "GenericJson"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
 		AND
 		"deviceId" IN ('` + deviceId + `')
+		AND
+		"deviceType" IN ('NSPI')
 		ORDER BY time DESC;
 	`
 	iterator, err := influxDB.Query(context.Background(), query) // Create iterator from query response
@@ -111,7 +116,8 @@ func GetNspiGenericJsonByDeviceId(c *gin.Context) {
 			},
 			"name": "NspiGenericJson",
 			"tags": gin.H{
-				"deviceId": value["deviceId"],
+				"deviceId":   value["deviceId"],
+				"deviceType": value["deviceType"],
 			},
 			"timestamp": value["time"],
 		}
@@ -149,8 +155,10 @@ func GetAllNspiAlert(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "NspiAlert"
+		FROM "Alert"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
+		AND
+		"deviceType" IN ('NSPI')
 		ORDER BY time DESC;
 	`
 
@@ -168,7 +176,8 @@ func GetAllNspiAlert(c *gin.Context) {
 			},
 			"name": "NspiAlert",
 			"tags": gin.H{
-				"deviceId": value["deviceId"],
+				"deviceId":   value["deviceId"],
+				"deviceType": value["deviceType"],
 			},
 			"timestamp": value["time"],
 		}
@@ -208,6 +217,8 @@ func GetNspiAlertByDeviceId(c *gin.Context) {
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
 		AND
+		"deviceType" IN ('NSPI')
+		AND
 		"deviceId" IN ('` + deviceId + `')
 		ORDER BY time DESC;
 	`
@@ -225,7 +236,8 @@ func GetNspiAlertByDeviceId(c *gin.Context) {
 			},
 			"name": "NspiAlert",
 			"tags": gin.H{
-				"deviceId": value["deviceId"],
+				"deviceId":   value["deviceId"],
+				"deviceType": value["deviceType"],
 			},
 			"timestamp": value["time"],
 		}

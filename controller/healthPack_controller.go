@@ -35,8 +35,10 @@ func GetAllHealthPackVital(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "HealthPackVital"
+		FROM "Vital"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
+		AND
+		"deviceType" IN ('HealthPack')
 		ORDER BY time DESC;
 	`
 
@@ -52,9 +54,10 @@ func GetAllHealthPackVital(c *gin.Context) {
 			"fields": gin.H{
 				"data": value["data"],
 			},
-			"name": "HealthPackVital",
+			"name": "Vital",
 			"tags": gin.H{
-				"deviceId": value["deviceId"],
+				"deviceId":   value["deviceId"],
+				"deviceType": value["deviceType"],
 			},
 			"timestamp": value["time"],
 		}
@@ -94,6 +97,8 @@ func GetHealthPackVitalByDeviceId(c *gin.Context) {
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
 		AND
+		"deviceType" IN ('HealthPack')
+		AND
 		"deviceId" IN ('` + deviceId + `')
 		ORDER BY time DESC;
 	`
@@ -111,7 +116,8 @@ func GetHealthPackVitalByDeviceId(c *gin.Context) {
 			},
 			"name": "HealthPackVital",
 			"tags": gin.H{
-				"deviceId": value["deviceId"],
+				"deviceId":   value["deviceId"],
+				"deviceType": value["deviceType"],
 			},
 			"timestamp": value["time"],
 		}

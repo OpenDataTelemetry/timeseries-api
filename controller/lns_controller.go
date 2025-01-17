@@ -1119,7 +1119,6 @@ func GetLnsWaterTankLevelByDeviceId(c *gin.Context) {
 }
 
 // WeatherStation
-
 func GetAllLnsWeatherStation(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
@@ -1310,8 +1309,8 @@ func GetLnsWeatherStationByDeviceId(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, objs)
 }
 
-// Downlink
-func GetAllLnsDownlink(c *gin.Context) {
+// Command
+func GetAllLnsCommand(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -1336,11 +1335,12 @@ func GetAllLnsDownlink(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "LnsDownlink"
+		FROM "Command"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
+		AND
+		"deviceType" IN ('LNS')
 		ORDER BY time DESC;
 	`
-
 	iterator, err := influxDB.Query(context.Background(), query) // Create iterator from query response
 
 	if err != nil {
@@ -1355,7 +1355,7 @@ func GetAllLnsDownlink(c *gin.Context) {
 				"data":      value["data"],
 				"fPort":     value["fPort"],
 			},
-			"name": "LnsDownlink",
+			"name": "Command",
 			"tags": gin.H{
 				"application": value["application"],
 				"deviceId":    value["deviceId"],
@@ -1375,7 +1375,7 @@ func GetAllLnsDownlink(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, objs)
 }
 
-func GetLnsDownlinkByDeviceId(c *gin.Context) {
+func GetLnsCommandByDeviceId(c *gin.Context) {
 	intervalStr := c.Query("interval")
 	interval, err := strconv.Atoi(intervalStr)
 
@@ -1400,9 +1400,11 @@ func GetLnsDownlinkByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "LnsDownlink"
+		FROM "Command"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
+		AND
+		"deviceType" IN ('LNS')
 		AND
 		"deviceId" IN ('` + deviceId + `')
 		ORDER BY time DESC;
@@ -1421,7 +1423,7 @@ func GetLnsDownlinkByDeviceId(c *gin.Context) {
 				"data":      value["data"],
 				"fPort":     value["fPort"],
 			},
-			"name": "LnsDownlink",
+			"name": "Command",
 			"tags": gin.H{
 				"application": value["application"],
 				"deviceId":    value["deviceId"],
@@ -1469,8 +1471,9 @@ func GetAllLnsAlert(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "LnsAlert"
+		FROM "Alert"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
+		"deviceType" IN ('LNS')
 		ORDER BY time DESC;
 	`
 
@@ -1486,7 +1489,7 @@ func GetAllLnsAlert(c *gin.Context) {
 			"fields": gin.H{
 				"data": value["data"],
 			},
-			"name": "LnsAlert",
+			"name": "Alert",
 			"tags": gin.H{
 				"deviceId": value["deviceId"],
 			},
@@ -1524,9 +1527,11 @@ func GetLnsAlertByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "LnsAlert"
+		FROM "Alert"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
+		AND
+		"deviceType" IN ('LNS')
 		AND
 		"deviceId" IN ('` + deviceId + `')
 		ORDER BY time DESC;
@@ -1543,7 +1548,7 @@ func GetLnsAlertByDeviceId(c *gin.Context) {
 			"fields": gin.H{
 				"data": value["data"],
 			},
-			"name": "LnsAlert",
+			"name": "Alert",
 			"tags": gin.H{
 				"deviceId": value["deviceId"],
 			},

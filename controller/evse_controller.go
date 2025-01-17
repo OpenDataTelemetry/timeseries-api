@@ -35,8 +35,10 @@ func GetAllEvseMeterValues(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "EvseMeterValues"
+		FROM "MeterValues"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
+		AND
+		"deviceType" IN ('EVSE')
 		ORDER BY time DESC;
 	`
 
@@ -95,9 +97,11 @@ func GetEvseMeterValuesByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "EvseMeterValues"
+		FROM "MeterValues"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
+		AND
+		"deviceType" IN ('EVSE')
 		AND
 		"deviceId" IN ('` + deviceId + `')
 		ORDER BY time DESC;
@@ -159,8 +163,10 @@ func GetAllEvseStatusNotification(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "EvseStatusNotification"
+		FROM "StatusNotification"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
+		AND
+		"deviceType" IN ('EVSE')
 		ORDER BY time DESC;
 	`
 
@@ -223,9 +229,11 @@ func GetEvseStatusNotificationByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "EvseStatusNotification"
+		FROM "StatusNotification"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
+		AND
+		"deviceType" IN ('EVSE')
 		AND
 		"deviceId" IN ('` + deviceId + `')
 		ORDER BY time DESC;
@@ -291,8 +299,10 @@ func GetAllEvseStartTransaction(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "EvseStartTransaction"
+		FROM "StartTransaction"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
+		AND
+		"deviceType" IN ('EVSE')
 		ORDER BY time DESC;
 	`
 
@@ -354,9 +364,11 @@ func GetEvseStartTransactionByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "EvseStartTransaction"
+		FROM "StartTransaction"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
+		AND
+		"deviceType" IN ('EVSE')
 		AND
 		"deviceId" IN ('` + deviceId + `')
 		ORDER BY time DESC;
@@ -421,8 +433,10 @@ func GetAllEvseStopTransaction(c *gin.Context) {
 
 	query := `
 		SELECT *
-		FROM "EvseStopTransaction"
+		FROM "StopTransaction"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
+		AND
+		"deviceType" IN ('EVSE')
 		ORDER BY time DESC;
 	`
 
@@ -483,9 +497,11 @@ func GetEvseStopTransactionByDeviceId(c *gin.Context) {
 	defer influxDB.Close() // Close the client connection after the function ends
 	query := `
 		SELECT *
-		FROM "EvseStopTransaction"
+		FROM "StopTransaction"
 		WHERE 
 		time >= now() - interval '` + intervalStr + ` minutes'
+		AND
+		"deviceType" IN ('EVSE')
 		AND
 		"deviceId" IN ('` + deviceId + `')
 		ORDER BY time DESC;
