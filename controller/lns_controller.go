@@ -1473,6 +1473,7 @@ func GetAllLnsAlert(c *gin.Context) {
 		SELECT *
 		FROM "Alert"
 		WHERE "time" >= now() - interval '` + intervalStr + ` minutes'
+		AND
 		"deviceType" IN ('LNS')
 		ORDER BY time DESC;
 	`
