@@ -49,6 +49,21 @@ func main() {
 		api.GET("NSPI/Alert/all", controller.GetAllNspiAlert)
 		api.GET("NSPI/Alert/deviceId/:deviceId", controller.GetNspiAlertByDeviceId)
 
+		api.GET("HealthPack/Vital/all", controller.GetAllHealthPackVital)
+		api.GET("HealthPack/Vital/deviceId/:deviceId", controller.GetHealthPackVitalByDeviceId)
+
+		api.GET("EVSE/MeterValues/all", controller.GetAllEvseMeterValues)
+		api.GET("EVSE/MeterValues/deviceId/:deviceId", controller.GetEvseMeterValuesByDeviceId)
+
+		api.GET("EVSE/StatusNotification/all", controller.GetAllEvseStatusNotification)
+		api.GET("EVSE/StatusNotification/deviceId/:deviceId", controller.GetEvseStatusNotificationByDeviceId)
+
+		api.GET("EVSE/StartTransaction/all", controller.GetAllEvseStartTransaction)
+		api.GET("EVSE/StartTransaction/deviceId/:deviceId", controller.GetEvseStartTransactionByDeviceId)
+
+		api.GET("EVSE/StopTransaction/all", controller.GetAllEvseStopTransaction)
+		api.GET("EVSE/StopTransaction/deviceId/:deviceId", controller.GetEvseStopTransactionByDeviceId)
+
 	}
 
 	r.Run(":8888")

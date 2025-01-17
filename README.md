@@ -88,3 +88,40 @@ https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/NSPI/Alert/all?interval=
 
 Get Alert by `deviceId`:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/NSPI/Alert/deviceId/0004a30b00e94314?interval=30
+
+## HealthPack
+### GenericJson
+Get all HealthPackVital measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/HealthPack/Vital/all?interval=30
+
+Get HealthPackVital by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/HealthPack/Vital/deviceId/0004a30b00e94314?interval=30
+
+## EVSE
+### MeterValues
+Get all EvseMeterValues measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/MeterValues/all?interval=30
+
+Get EvseMeterValues by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/MeterValues/deviceId/0004a30b00e94314?interval=30
+
+### StatusNotification
+Get all EvseStatusNotification measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StatusNotification/all?interval=30
+
+Get EvseStatusNotification by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StatusNotification/deviceId/0004a30b00e94314?interval=30
+
+### StartTransaction
+Get all EvseStartTransaction measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StartTransaction/all?interval=30
+
+Get EvseStartTransaction by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StartTransaction/deviceId/0004a30b00e94314?interval=30
+
+### StopTransaction
+Get all EvseStopTransaction measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StopTransaction/all?interval=30
+
+Get EvseStopTransaction by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StopTransaction/deviceId/0004a30b00e94314?interval=30
