@@ -57,7 +57,7 @@ Get all SoilMoisture3DepthLevels measurements by last 30 minutes:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/SoilMoisture3DepthLevels/all?interval=30
 
 Get SoilMoisture3DepthLevels by `deviceId`:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/SoilMoisture3DepthLevels/deviceId/0004a30b001e0b53?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/SoilMoisture3DepthLevels/deviceId/0004a30b01000200?interval=30
 
 ### Downlink
 Get all LnsDownlink measurements by last 30 minutes:
@@ -76,21 +76,21 @@ https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/Alert/deviceId/0004a
 
 ## NSPI
 ### GenericJson
-Get all LnsDownlink measurements by last 30 minutes:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/NSPI/Downlink/all?interval=30
+Get all NspiGenericJson measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/NSPI/GenericJson/all?interval=30
 
-Get NSPIDownlink by `deviceId`:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/NSPI/Downlink/deviceId/0004a30b00e94314?interval=30
+Get NspiGenericJson by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/NSPI/GenericJson/deviceId/0004a30b00e94314?interval=30
 
 ### Alert
-Get all Alert measurements by last 30 minutes:
+Get all NspiAlert measurements by last 30 minutes:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/NSPI/Alert/all?interval=30
 
-Get Alert by `deviceId`:
+Get NspiAlert by `deviceId`:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/NSPI/Alert/deviceId/0004a30b00e94314?interval=30
 
 ## HealthPack
-### GenericJson
+### Vital
 Get all HealthPackVital measurements by last 30 minutes:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/HealthPack/Vital/all?interval=30
 
@@ -103,25 +103,25 @@ Get all EvseMeterValues measurements by last 30 minutes:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/MeterValues/all?interval=30
 
 Get EvseMeterValues by `deviceId`:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/MeterValues/deviceId/0004a30b00e94314?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/MeterValues/deviceId/BRIMTE19400577?interval=30
 
 ### StatusNotification
 Get all EvseStatusNotification measurements by last 30 minutes:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StatusNotification/all?interval=30
 
 Get EvseStatusNotification by `deviceId`:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StatusNotification/deviceId/0004a30b00e94314?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StatusNotification/deviceId/BRIMTE19743013?interval=30
 
 ### StartTransaction
 Get all EvseStartTransaction measurements by last 30 minutes:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StartTransaction/all?interval=30
 
 Get EvseStartTransaction by `deviceId`:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StartTransaction/deviceId/0004a30b00e94314?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StartTransaction/deviceId/BRIMTE19743013?interval=30
 
 ### StopTransaction
 Get all EvseStopTransaction measurements by last 30 minutes:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StopTransaction/all?interval=30
 
 Get EvseStopTransaction by `deviceId`:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StopTransaction/deviceId/0004a30b00e94314?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StopTransaction/deviceId/BRIMTS01?interval=30
