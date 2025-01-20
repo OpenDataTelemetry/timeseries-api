@@ -11,59 +11,70 @@ func main() {
 
 	r.Use(cors.Default())
 
-	api := r.Group("/api/timeseries/v0.3/IMT/")
+	api := r.Group("/api/timeseries/v0.3/")
 	{
-		api.GET("LNS/SmartLight/all", controller.GetAllLnsSmartLight)
-		api.GET("LNS/SmartLight/deviceId/:deviceId", controller.GetLnsSmartLightByDeviceId)
+		api.GET("IMT/LNS/SmartLight/all", controller.GetAllLnsSmartLight)
+		api.GET("IMT/LNS/SmartLight/deviceId/:deviceId", controller.GetLnsSmartLightByDeviceId)
 
-		api.GET("LNS/WaterTankLevel/all", controller.GetAllLnsWaterTankLevel)
-		api.GET("LNS/WaterTankLevel/deviceId/:deviceId", controller.GetLnsWaterTankLevelByDeviceId)
+		api.GET("IMT/LNS/WaterTankLevel/all", controller.GetAllLnsWaterTankLevel)
+		api.GET("IMT/LNS/WaterTankLevel/deviceId/:deviceId", controller.GetLnsWaterTankLevelByDeviceId)
 
-		api.GET("LNS/GaugePressure/all", controller.GetAllLnsGaugePressure)
-		api.GET("LNS/GaugePressure/deviceId/:deviceId", controller.GetLnsGaugePressureByDeviceId)
+		api.GET("IMT/LNS/GaugePressure/all", controller.GetAllLnsGaugePressure)
+		api.GET("IMT/LNS/GaugePressure/deviceId/:deviceId", controller.GetLnsGaugePressureByDeviceId)
 
-		api.GET("LNS/Hydrometer/all", controller.GetAllLnsHydrometer)
-		api.GET("LNS/Hydrometer/deviceId/:deviceId", controller.GetLnsHydrometerByDeviceId)
+		api.GET("IMT/LNS/Hydrometer/all", controller.GetAllLnsHydrometer)
+		api.GET("IMT/LNS/Hydrometer/deviceId/:deviceId", controller.GetLnsHydrometerByDeviceId)
 
-		api.GET("LNS/EnergyMeter/all", controller.GetAllLnsEnergyMeter)
-		api.GET("LNS/EnergyMeter/deviceId/:deviceId", controller.GetLnsEnergyMeterByDeviceId)
+		api.GET("IMT/LNS/EnergyMeter/all", controller.GetAllLnsEnergyMeter)
+		api.GET("IMT/LNS/EnergyMeter/deviceId/:deviceId", controller.GetLnsEnergyMeterByDeviceId)
 
-		api.GET("LNS/WeatherStation/all", controller.GetAllLnsWeatherStation)
-		api.GET("LNS/WeatherStation/deviceId/:deviceId", controller.GetLnsWeatherStationByDeviceId)
+		api.GET("IMT/LNS/WeatherStation/all", controller.GetAllLnsWeatherStation)
+		api.GET("IMT/LNS/WeatherStation/deviceId/:deviceId", controller.GetLnsWeatherStationByDeviceId)
 
-		api.GET("LNS/Sprinkler/all", controller.GetAllLnsSprinkler)
-		api.GET("LNS/Sprinkler/deviceId/:deviceId", controller.GetLnsSprinklerByDeviceId)
+		api.GET("IMT/LNS/Sprinkler/all", controller.GetAllLnsSprinkler)
+		api.GET("IMT/LNS/Sprinkler/deviceId/:deviceId", controller.GetLnsSprinklerByDeviceId)
 
-		api.GET("LNS/SoilMoisture3DepthLevels/all", controller.GetAllLnsSoilMoisture3DepthLevels)
-		api.GET("LNS/SoilMoisture3DepthLevels/deviceId/:deviceId", controller.GetLnsSoilMoisture3DepthLevelsByDeviceId)
+		api.GET("IMT/LNS/SoilMoisture3DepthLevels/all", controller.GetAllLnsSoilMoisture3DepthLevels)
+		api.GET("IMT/LNS/SoilMoisture3DepthLevels/deviceId/:deviceId", controller.GetLnsSoilMoisture3DepthLevelsByDeviceId)
 
-		api.GET("LNS/Command/all", controller.GetAllLnsCommand)
-		api.GET("LNS/Command/deviceId/:deviceId", controller.GetLnsCommandByDeviceId)
+		api.GET("IMT/LNS/Command/all", controller.GetAllLnsCommand)
+		api.GET("IMT/LNS/Command/deviceId/:deviceId", controller.GetLnsCommandByDeviceId)
 
-		api.GET("LNS/Alert/all", controller.GetAllLnsAlert)
-		api.GET("LNS/Alert/deviceId/:deviceId", controller.GetLnsAlertByDeviceId)
+		api.GET("IMT/LNS/Alert/all", controller.GetAllLnsAlert)
+		api.GET("IMT/LNS/Alert/deviceId/:deviceId", controller.GetLnsAlertByDeviceId)
 
-		api.GET("NSPI/GenericJson/all", controller.GetAllNspiGenericJson)
-		api.GET("NSPI/GenericJson/deviceId/:deviceId", controller.GetNspiGenericJsonByDeviceId)
+		api.GET("IMT/NSPI/GenericJson/all", controller.GetAllNspiGenericJson)
+		api.GET("IMT/NSPI/GenericJson/deviceId/:deviceId", controller.GetNspiGenericJsonByDeviceId)
 
-		api.GET("NSPI/Alert/all", controller.GetAllNspiAlert)
-		api.GET("NSPI/Alert/deviceId/:deviceId", controller.GetNspiAlertByDeviceId)
+		api.GET("IMT/NSPI/Alert/all", controller.GetAllNspiAlert)
+		api.GET("IMT/NSPI/Alert/deviceId/:deviceId", controller.GetNspiAlertByDeviceId)
 
-		api.GET("HealthPack/Vital/all", controller.GetAllHealthPackVital)
-		api.GET("HealthPack/Vital/deviceId/:deviceId", controller.GetHealthPackVitalByDeviceId)
+		api.GET("IMT/EVSE/MeterValues/all", controller.GetAllEvseMeterValues)
+		api.GET("IMT/EVSE/MeterValues/deviceId/:deviceId", controller.GetEvseMeterValuesByDeviceId)
 
-		api.GET("EVSE/MeterValues/all", controller.GetAllEvseMeterValues)
-		api.GET("EVSE/MeterValues/deviceId/:deviceId", controller.GetEvseMeterValuesByDeviceId)
+		api.GET("IMT/EVSE/StatusNotification/all", controller.GetAllEvseStatusNotification)
+		api.GET("IMT/EVSE/StatusNotification/deviceId/:deviceId", controller.GetEvseStatusNotificationByDeviceId)
 
-		api.GET("EVSE/StatusNotification/all", controller.GetAllEvseStatusNotification)
-		api.GET("EVSE/StatusNotification/deviceId/:deviceId", controller.GetEvseStatusNotificationByDeviceId)
+		api.GET("IMT/EVSE/StartTransaction/all", controller.GetAllEvseStartTransaction)
+		api.GET("IMT/EVSE/StartTransaction/deviceId/:deviceId", controller.GetEvseStartTransactionByDeviceId)
 
-		api.GET("EVSE/StartTransaction/all", controller.GetAllEvseStartTransaction)
-		api.GET("EVSE/StartTransaction/deviceId/:deviceId", controller.GetEvseStartTransactionByDeviceId)
+		api.GET("IMT/EVSE/StopTransaction/all", controller.GetAllEvseStopTransaction)
+		api.GET("IMT/EVSE/StopTransaction/deviceId/:deviceId", controller.GetEvseStopTransactionByDeviceId)
 
-		api.GET("EVSE/StopTransaction/all", controller.GetAllEvseStopTransaction)
-		api.GET("EVSE/StopTransaction/deviceId/:deviceId", controller.GetEvseStopTransactionByDeviceId)
+		api.GET("SaoRafael/HealthPack/Inertias/all", controller.GetAllHealthPackInertias)
+		api.GET("SaoRafael/HealthPack/Inertias/deviceId/:deviceId", controller.GetHealthPackInertiasByDeviceId)
 
+		api.GET("SaoRafael/HealthPack/Tracking/all", controller.GetAllHealthPackTracking)
+		api.GET("SaoRafael/HealthPack/Tracking/deviceId/:deviceId", controller.GetHealthPackTrackingByDeviceId)
+
+		api.GET("SaoRafael/HealthPack/Status/all", controller.GetAllHealthPackStatus)
+		api.GET("SaoRafael/HealthPack/Status/deviceId/:deviceId", controller.GetHealthPackStatusByDeviceId)
+
+		api.GET("SaoRafael/HealthPack/Ischemia/all", controller.GetAllHealthPackIschemia)
+		api.GET("SaoRafael/HealthPack/Ischemia/deviceId/:deviceId", controller.GetHealthPackIschemiaByDeviceId)
+
+		// api.GET("SaoRafael/HealthPack/Alarms/all", controller.GetAllHealthPackAlarms)
+		// api.GET("SaoRafael/HealthPack/Alarms/deviceId/:deviceId", controller.GetHealthPackAlarmsByDeviceId)
 	}
 
 	r.Run(":8888")
