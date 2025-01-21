@@ -583,11 +583,20 @@ func GetAllEvseAlert(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
-				"data": value["data"],
+				"data":         value["data"],
+				"trigger":      value["trigger"],
+				"triggerAt":    value["triggerAt"],
+				"triggerType":  value["triggerType"],
+				"lastPlayed":   value["lastPlayed"],
+				"actionSensor": value["actionSensor"],
+				"currentValue": value["currentValue"],
 			},
 			"name": "Alert",
 			"tags": gin.H{
-				"deviceId": value["deviceId"],
+				"deviceId":   value["deviceId"],
+				"deviceType": value["deviceType"],
+				"direction":  value["direction"],
+				"etc":        value["origin"],
 			},
 			"timestamp": value["time"],
 		}
@@ -642,11 +651,20 @@ func GetEvseAlertByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
-				"data": value["data"],
+				"data":         value["data"],
+				"trigger":      value["trigger"],
+				"triggerAt":    value["triggerAt"],
+				"triggerType":  value["triggerType"],
+				"lastPlayed":   value["lastPlayed"],
+				"actionSensor": value["actionSensor"],
+				"currentValue": value["currentValue"],
 			},
 			"name": "Alert",
 			"tags": gin.H{
-				"deviceId": value["deviceId"],
+				"deviceId":   value["deviceId"],
+				"deviceType": value["deviceType"],
+				"direction":  value["direction"],
+				"etc":        value["origin"],
 			},
 			"timestamp": value["time"],
 		}
