@@ -13,6 +13,9 @@ func main() {
 
 	api := r.Group("/api/timeseries/v0.3/")
 	{
+		api.GET("IMT/all/Alert/all", controller.GetAllAlert)
+		api.GET("IMT/all/Alert/deviceId/:deviceId", controller.GetAlertByDeviceId)
+
 		api.GET("IMT/LNS/SmartLight/all", controller.GetAllLnsSmartLight)
 		api.GET("IMT/LNS/SmartLight/deviceId/:deviceId", controller.GetLnsSmartLightByDeviceId)
 
@@ -61,20 +64,20 @@ func main() {
 		api.GET("IMT/EVSE/StopTransaction/all", controller.GetAllEvseStopTransaction)
 		api.GET("IMT/EVSE/StopTransaction/deviceId/:deviceId", controller.GetEvseStopTransactionByDeviceId)
 
-		api.GET("SaoRafael/HealthPack/Inertias/all", controller.GetAllHealthPackInertias)
-		api.GET("SaoRafael/HealthPack/Inertias/deviceId/:deviceId", controller.GetHealthPackInertiasByDeviceId)
+		api.GET("IMT/HealthPack/Inertias/all", controller.GetAllHealthPackInertias)
+		api.GET("IMT/HealthPack/Inertias/deviceId/:deviceId", controller.GetHealthPackInertiasByDeviceId)
 
-		api.GET("SaoRafael/HealthPack/Tracking/all", controller.GetAllHealthPackTracking)
-		api.GET("SaoRafael/HealthPack/Tracking/deviceId/:deviceId", controller.GetHealthPackTrackingByDeviceId)
+		api.GET("IMT/HealthPack/Tracking/all", controller.GetAllHealthPackTracking)
+		api.GET("IMT/HealthPack/Tracking/deviceId/:deviceId", controller.GetHealthPackTrackingByDeviceId)
 
-		api.GET("SaoRafael/HealthPack/Status/all", controller.GetAllHealthPackStatus)
-		api.GET("SaoRafael/HealthPack/Status/deviceId/:deviceId", controller.GetHealthPackStatusByDeviceId)
+		api.GET("IMT/HealthPack/Status/all", controller.GetAllHealthPackStatus)
+		api.GET("IMT/HealthPack/Status/deviceId/:deviceId", controller.GetHealthPackStatusByDeviceId)
 
-		api.GET("SaoRafael/HealthPack/Ischemia/all", controller.GetAllHealthPackIschemia)
-		api.GET("SaoRafael/HealthPack/Ischemia/deviceId/:deviceId", controller.GetHealthPackIschemiaByDeviceId)
+		api.GET("IMT/HealthPack/Ischemia/all", controller.GetAllHealthPackIschemia)
+		api.GET("IMT/HealthPack/Ischemia/deviceId/:deviceId", controller.GetHealthPackIschemiaByDeviceId)
 
-		// api.GET("SaoRafael/HealthPack/Alarms/all", controller.GetAllHealthPackAlarms)
-		// api.GET("SaoRafael/HealthPack/Alarms/deviceId/:deviceId", controller.GetHealthPackAlarmsByDeviceId)
+		// api.GET("IMT/HealthPack/Alarms/all", controller.GetAllHealthPackAlarms)
+		// api.GET("IMT/HealthPack/Alarms/deviceId/:deviceId", controller.GetHealthPackAlarmsByDeviceId)
 	}
 
 	r.Run(":8888")

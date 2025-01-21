@@ -1,6 +1,14 @@
 # timeseries-api
 
 # IMT
+### All Alerts
+Get all Alert measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/all/Alert/all?interval=30
+
+Get Alert by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/all/Alert/deviceId/0004a30b00e94314?interval=30
+
+
 ## LNS
 ### SmartLight
 Get all SmartLights by last 30 minutes:
@@ -119,39 +127,38 @@ https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StopTransaction/all
 Get EvseStopTransaction by `deviceId`:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StopTransaction/deviceId/BRIMTS01?interval=30
 
-# SaoRafael 
 ## HealthPack
 ### Inertias
 Get all HealthPackInertias measurements by last 30 minutes:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/SaoRafael/HealthPack/Inertias/all?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/HealthPack/Inertias/all?interval=30
 
 Get HealthPackInertias by `deviceId`:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/SaoRafael/HealthPack/Inertias/deviceId/a1b2c3d4?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/HealthPack/Inertias/deviceId/a1b2c3d4?interval=30
 
 ### Tracking
 Get all HealthPackTracking measurements by last 30 minutes:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/SaoRafael/HealthPack/Tracking/all?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/HealthPack/Tracking/all?interval=30
 
 Get HealthPackTracking by `deviceId`:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/SaoRafael/HealthPack/Tracking/deviceId/a1b2c3d4?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/HealthPack/Tracking/deviceId/a1b2c3d4?interval=30
 
 ### Status
 Get all HealthPackStatus measurements by last 30 minutes:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/SaoRafael/HealthPack/Status/all?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/HealthPack/Status/all?interval=30
 
 Get HealthPackStatus by `deviceId`:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/SaoRafael/HealthPack/Status/deviceId/a1b2c3d4?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/HealthPack/Status/deviceId/a1b2c3d4?interval=30
 
 ### Ischemia
 Get all HealthPackIschemia measurements by last 30 minutes:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/SaoRafael/HealthPack/Ischemia/all?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/HealthPack/Ischemia/all?interval=30
 
 Get HealthPackIschemia by `deviceId`:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/SaoRafael/HealthPack/Ischemia/deviceId/a1b2c3d4?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/HealthPack/Ischemia/deviceId/a1b2c3d4?interval=30
 
 ### Alarms (TODO)
 Get all HealthPackAlarms measurements by last 30 minutes:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/SaoRafael/HealthPack/Alarms/all?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/HealthPack/Alarms/all?interval=30
 
 Get HealthPackAlarms by `deviceId`:
-https://smartcampus-k8s.maua.br/api/timeseries/v0.3/SaoRafael/HealthPack/Alarms/deviceId/a1b2c3d4?interval=30
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/HealthPack/Alarms/deviceId/a1b2c3d4?interval=30
