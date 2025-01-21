@@ -316,10 +316,10 @@ func GetAllEvseStartTransaction(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
-				"startMeter":     value["startMeter"],
-				"transactionId:": value["transactionId"],
-				"startTime:":     value["startTime"],
-				"idTag:":         value["idTag"],
+				"startMeter":    value["startMeter"],
+				"transactionId": value["transactionId"],
+				"startTime":     value["startTime"],
+				"idTag":         value["idTag"],
 			},
 			"name": "EvseStartTransaction",
 			"tags": gin.H{
@@ -383,10 +383,10 @@ func GetEvseStartTransactionByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
-				"startMeter":     value["startMeter"],
-				"transactionId:": value["transactionId"],
-				"startTime:":     value["startTime"],
-				"idTag:":         value["idTag"],
+				"startMeter":    value["startMeter"],
+				"transactionId": value["transactionId"],
+				"startTime":     value["startTime"],
+				"idTag":         value["idTag"],
 			},
 			"name": "EvseStartTransaction",
 			"tags": gin.H{
@@ -450,9 +450,9 @@ func GetAllEvseStopTransaction(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
-				"transactionId:": value["transactionId"],
-				"MeterStop":      value["MeterStop"],
-				"stopTime":       value["stopTime"],
+				"transactionId": value["transactionId"],
+				"MeterStop":     value["MeterStop"],
+				"stopTime":      value["stopTime"],
 			},
 			"name": "EvseStopTransaction",
 			"tags": gin.H{
@@ -516,9 +516,9 @@ func GetEvseStopTransactionByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
-				"transactionId:": value["transactionId"],
-				"MeterStop":      value["MeterStop"],
-				"stopTime":       value["stopTime"],
+				"transactionId": value["transactionId"],
+				"MeterStop":     value["MeterStop"],
+				"stopTime":      value["stopTime"],
 			},
 			"name": "EvseStopTransaction",
 			"tags": gin.H{
