@@ -64,6 +64,9 @@ func main() {
 		api.GET("IMT/EVSE/StopTransaction/all", controller.GetAllEvseStopTransaction)
 		api.GET("IMT/EVSE/StopTransaction/deviceId/:deviceId", controller.GetEvseStopTransactionByDeviceId)
 
+		api.GET("IMT/EVSE/Alert/all", controller.GetAllEvseAlert)
+		api.GET("IMT/EVSE/Alert/deviceId/:deviceId", controller.GetEvseAlertByDeviceId)
+
 		api.GET("IMT/HealthPack/Inertias/all", controller.GetAllHealthPackInertias)
 		api.GET("IMT/HealthPack/Inertias/deviceId/:deviceId", controller.GetHealthPackInertiasByDeviceId)
 

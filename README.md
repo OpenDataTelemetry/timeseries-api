@@ -127,6 +127,13 @@ https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StopTransaction/all
 Get EvseStopTransaction by `deviceId`:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/StopTransaction/deviceId/BRIMTS01?interval=30
 
+### Alert
+Get all EvseAlert measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/Alert/all?interval=30
+
+Get EvseAlert by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/EVSE/Alert/deviceId/BRIMTS01?interval=30
+
 ## HealthPack
 ### Inertias
 Get all HealthPackInertias measurements by last 30 minutes:
