@@ -40,6 +40,15 @@ func main() {
 		api.GET("IMT/LNS/SoilMoisture3DepthLevels/all", controller.GetAllLnsSoilMoisture3DepthLevels)
 		api.GET("IMT/LNS/SoilMoisture3DepthLevels/deviceId/:deviceId", controller.GetLnsSoilMoisture3DepthLevelsByDeviceId)
 
+		api.GET("IMT/LNS/MilkFat/all", controller.GetAllLnsMilkFat)
+		api.GET("IMT/LNS/MilkFat/deviceId/:deviceId", controller.GetLnsMilkFatByDeviceId)
+
+		api.GET("IMT/LNS/GPS/all", controller.GetAllLnsGPS)
+		api.GET("IMT/LNS/GPS/deviceId/:deviceId", controller.GetLnsGPSByDeviceId)
+
+		api.GET("IMT/LNS/VibrationAverage/all", controller.GetAllLnsVibrationAverage)
+		api.GET("IMT/LNS/VibrationAverage/deviceId/:deviceId", controller.GetLnsVibrationAverageByDeviceId)
+
 		api.GET("IMT/LNS/Command/all", controller.GetAllLnsCommand)
 		api.GET("IMT/LNS/Command/deviceId/:deviceId", controller.GetLnsCommandByDeviceId)
 

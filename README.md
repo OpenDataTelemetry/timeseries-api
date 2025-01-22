@@ -68,6 +68,27 @@ https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/SoilMoisture3DepthLe
 Get SoilMoisture3DepthLevels by `deviceId`:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/SoilMoisture3DepthLevels/deviceId/0004a30b01000200?interval=30
 
+### MilkFat
+Get all MilkFat measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/MilkFat/all?interval=30
+
+Get MilkFat by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/MilkFat/deviceId/0004a30b00e9d7c9?interval=30
+
+### GPS
+Get all GPS measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/GPS/all?interval=30
+
+Get GPS by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/GPS/deviceId/0004a30b00e943df?interval=30
+
+### VibrationAverage
+Get all VibrationAverage measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/VibrationAverage/all?interval=30
+
+Get VibrationAverage by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/VibrationAverage/deviceId/0004a30b001a1d6f?interval=30
+
 ### Command
 Get all LnsCommand measurements by last 30 minutes:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/Command/all?interval=30
