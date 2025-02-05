@@ -89,6 +89,14 @@ https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/VibrationAverage/all
 Get VibrationAverage by `deviceId`:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/VibrationAverage/deviceId/0004a30b001a1d6f?interval=30
 
+### Temperature8Point
+Get all Temperature8Point measurements by last 30 minutes:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/Temperature8Point/all?interval=30
+
+Get Temperature8Point by `deviceId`:
+https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/Temperature8Point/deviceId/0004a30b0023580e?interval=30
+
+
 ### Command
 Get all LnsCommand measurements by last 30 minutes:
 https://smartcampus-k8s.maua.br/api/timeseries/v0.3/IMT/LNS/Command/all?interval=30
