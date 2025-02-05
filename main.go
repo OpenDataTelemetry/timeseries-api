@@ -49,6 +49,9 @@ func main() {
 		api.GET("IMT/LNS/VibrationAverage/all", controller.GetAllLnsVibrationAverage)
 		api.GET("IMT/LNS/VibrationAverage/deviceId/:deviceId", controller.GetLnsVibrationAverageByDeviceId)
 
+		api.GET("IMT/LNS/Temperature8Point/all", controller.GetAllLnsTemperature8Point)
+		api.GET("IMT/LNS/Temperature8Point/deviceId/:deviceId", controller.GetLnsTemperature8PointByDeviceId)
+
 		api.GET("IMT/LNS/Command/all", controller.GetAllLnsCommand)
 		api.GET("IMT/LNS/Command/deviceId/:deviceId", controller.GetLnsCommandByDeviceId)
 
