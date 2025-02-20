@@ -19,8 +19,8 @@ func GetAllHealthPackInertias(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -95,8 +95,8 @@ func GetHealthPackInertiasByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -175,8 +175,8 @@ func GetAllHealthPackTracking(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -259,8 +259,8 @@ func GetHealthPackTrackingByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -347,8 +347,8 @@ func GetAllHealthPackStatus(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -427,8 +427,8 @@ func GetHealthPackStatusByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -511,8 +511,8 @@ func GetAllHealthPackIschemia(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -583,8 +583,8 @@ func GetHealthPackIschemiaByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -659,8 +659,8 @@ func GetHealthPackIschemiaByDeviceId(c *gin.Context) {
 // 		return
 // 	}
 
-// 	if interval > 57600 {
-// 		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+// 	if interval > 43200 {
+// 		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 // 		return
 // 	}
 
@@ -721,8 +721,8 @@ func GetHealthPackIschemiaByDeviceId(c *gin.Context) {
 // 		return
 // 	}
 
-// 	if interval > 57600 {
-// 		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+// 	if interval > 43200 {
+// 		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 // 		return
 // 	}
 

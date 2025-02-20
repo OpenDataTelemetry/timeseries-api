@@ -21,8 +21,8 @@ func GetAllLnsEnergyMeter(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -97,8 +97,8 @@ func GetLnsEnergyMeterByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -179,8 +179,8 @@ func GetAllLnsGaugePressure(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -254,8 +254,8 @@ func GetLnsGaugePressureByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -335,8 +335,8 @@ func GetAllLnsHydrometer(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -366,7 +366,7 @@ func GetAllLnsHydrometer(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
-				"counter":        value["counter"],
+				"litreCounter":   value["litreCounter"],
 				"boardVoltage":   value["boardVoltage"],
 				"data":           value["data"],
 				"fCnt":           value["fCnt"],
@@ -409,8 +409,8 @@ func GetLnsHydrometerByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -442,7 +442,7 @@ func GetLnsHydrometerByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
-				"counter":        value["counter"],
+				"litreCounter":   value["litreCounter"],
 				"boardVoltage":   value["boardVoltage"],
 				"data":           value["data"],
 				"fCnt":           value["fCnt"],
@@ -489,8 +489,8 @@ func GetAllLnsSmartLight(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -520,23 +520,23 @@ func GetAllLnsSmartLight(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
-				"temperature":    value["temperature"],
-				"humidity":       value["humidity"],
-				"movement":       value["movement"],
-				"luminosity":     value["luminosity"],
-				"batteryVoltage": value["batteryVoltage"],
-				"boardVoltage":   value["boardVoltage"],
-				"data":           value["data"],
-				"fCnt":           value["fCnt"],
-				"fPort":          value["fPort"],
-				"rxAlt_0":        value["rxAlt_0"],
-				"rxLat_0":        value["rxLat_0"],
-				"rxLon_0":        value["rxLon_0"],
-				"rxRssi_0":       value["rxRssi_0"],
-				"rxSnr_0":        value["rxSnr_0"],
-				"txBandWidth":    value["txBandWidth"],
-				"txFrequency":    value["txFrequency"],
-				"txSpreadFactor": value["txSpreadFactor"],
+				"temperature":     value["temperature"],
+				"humidity":        value["humidity"],
+				"movementCounter": value["movementCounter"],
+				"luminosity":      value["luminosity"],
+				"batteryVoltage":  value["batteryVoltage"],
+				"boardVoltage":    value["boardVoltage"],
+				"data":            value["data"],
+				"fCnt":            value["fCnt"],
+				"fPort":           value["fPort"],
+				"rxAlt_0":         value["rxAlt_0"],
+				"rxLat_0":         value["rxLat_0"],
+				"rxLon_0":         value["rxLon_0"],
+				"rxRssi_0":        value["rxRssi_0"],
+				"rxSnr_0":         value["rxSnr_0"],
+				"txBandWidth":     value["txBandWidth"],
+				"txFrequency":     value["txFrequency"],
+				"txSpreadFactor":  value["txSpreadFactor"],
 			},
 			"name": "SmartLight",
 			"tags": gin.H{
@@ -568,8 +568,8 @@ func GetLnsSmartLightByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -602,23 +602,23 @@ func GetLnsSmartLightByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
-				"temperature":    value["temperature"],
-				"humidity":       value["humidity"],
-				"movement":       value["movement"],
-				"luminosity":     value["luminosity"],
-				"batteryVoltage": value["batteryVoltage"],
-				"boardVoltage":   value["boardVoltage"],
-				"data":           value["data"],
-				"fCnt":           value["fCnt"],
-				"fPort":          value["fPort"],
-				"rxAlt_0":        value["rxAlt_0"],
-				"rxLat_0":        value["rxLat_0"],
-				"rxLon_0":        value["rxLon_0"],
-				"rxRssi_0":       value["rxRssi_0"],
-				"rxSnr_0":        value["rxSnr_0"],
-				"txBandWidth":    value["txBandWidth"],
-				"txFrequency":    value["txFrequency"],
-				"txSpreadFactor": value["txSpreadFactor"],
+				"temperature":     value["temperature"],
+				"humidity":        value["humidity"],
+				"movementCounter": value["movementCounter"],
+				"luminosity":      value["luminosity"],
+				"batteryVoltage":  value["batteryVoltage"],
+				"boardVoltage":    value["boardVoltage"],
+				"data":            value["data"],
+				"fCnt":            value["fCnt"],
+				"fPort":           value["fPort"],
+				"rxAlt_0":         value["rxAlt_0"],
+				"rxLat_0":         value["rxLat_0"],
+				"rxLon_0":         value["rxLon_0"],
+				"rxRssi_0":        value["rxRssi_0"],
+				"rxSnr_0":         value["rxSnr_0"],
+				"txBandWidth":     value["txBandWidth"],
+				"txFrequency":     value["txFrequency"],
+				"txSpreadFactor":  value["txSpreadFactor"],
 			},
 			"name": "SmartLight",
 			"tags": gin.H{
@@ -653,8 +653,8 @@ func GetAllLnsSoilMoisture3DepthLevels(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -730,8 +730,8 @@ func GetLnsSoilMoisture3DepthLevelsByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -812,8 +812,8 @@ func GetAllLnsSprinkler(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -890,8 +890,8 @@ func GetLnsSprinklerByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -973,8 +973,8 @@ func GetAllLnsWaterTankLevel(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -1048,8 +1048,8 @@ func GetLnsWaterTankLevelByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -1128,8 +1128,8 @@ func GetAllLnsWeatherStation(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -1221,8 +1221,8 @@ func GetLnsWeatherStationByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -1319,8 +1319,8 @@ func GetAllLnsMilkFat(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -1350,6 +1350,10 @@ func GetAllLnsMilkFat(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
+				"temperature":    value["temperature"],
+				"infraRed":       value["infraRed"],
+				"capacitive":     value["capacitive"],
+				"milkFat":        value["milkFat"],
 				"boardVoltage":   value["boardVoltage"],
 				"data":           value["data"],
 				"fCnt":           value["fCnt"],
@@ -1393,8 +1397,8 @@ func GetLnsMilkFatByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -1426,6 +1430,10 @@ func GetLnsMilkFatByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
+				"temperature":    value["temperature"],
+				"infraRed":       value["infraRed"],
+				"capacitive":     value["capacitive"],
+				"milkFat":        value["milkFat"],
 				"boardVoltage":   value["boardVoltage"],
 				"data":           value["data"],
 				"fCnt":           value["fCnt"],
@@ -1472,8 +1480,8 @@ func GetAllLnsGPS(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -1503,6 +1511,8 @@ func GetAllLnsGPS(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
+				"latitude":       value["latitude"],
+				"longitude":      value["longitude"],
 				"boardVoltage":   value["boardVoltage"],
 				"data":           value["data"],
 				"fCnt":           value["fCnt"],
@@ -1546,8 +1556,8 @@ func GetLnsGPSByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -1579,6 +1589,8 @@ func GetLnsGPSByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
+				"latitude":       value["latitude"],
+				"longitude":      value["longitude"],
 				"boardVoltage":   value["boardVoltage"],
 				"data":           value["data"],
 				"fCnt":           value["fCnt"],
@@ -1625,8 +1637,8 @@ func GetAllLnsVibrationAverage(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -1704,8 +1716,8 @@ func GetLnsVibrationAverageByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -1788,8 +1800,8 @@ func GetAllLnsTemperature8Point(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -1870,8 +1882,8 @@ func GetLnsTemperature8PointByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -1957,8 +1969,8 @@ func GetAllLnsCommand(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -2022,8 +2034,8 @@ func GetLnsCommandByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -2093,8 +2105,8 @@ func GetAllLnsAlert(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -2159,8 +2171,8 @@ func GetLnsAlertByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 

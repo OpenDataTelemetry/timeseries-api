@@ -19,8 +19,8 @@ func GetAllEvseMeterValues(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -81,8 +81,8 @@ func GetEvseMeterValuesByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -147,8 +147,8 @@ func GetAllEvseStatusNotification(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -213,8 +213,8 @@ func GetEvseStatusNotificationByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -283,8 +283,8 @@ func GetAllEvseStartTransaction(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -348,8 +348,8 @@ func GetEvseStartTransactionByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -417,8 +417,8 @@ func GetAllEvseStopTransaction(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -481,8 +481,8 @@ func GetEvseStopTransactionByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -550,8 +550,8 @@ func GetAllEvseAlert(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -616,8 +616,8 @@ func GetEvseAlertByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 

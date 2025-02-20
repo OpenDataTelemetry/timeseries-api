@@ -20,8 +20,8 @@ func GetAllAlert(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -84,8 +84,8 @@ func GetAlertByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 

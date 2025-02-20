@@ -19,8 +19,8 @@ func GetAllNspiGenericJson(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -77,8 +77,8 @@ func GetNspiGenericJsonByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -139,8 +139,8 @@ func GetAllNspiAlert(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
@@ -205,8 +205,8 @@ func GetNspiAlertByDeviceId(c *gin.Context) {
 		return
 	}
 
-	if interval > 57600 {
-		c.JSON(400, gin.H{"error": "Interval must be less than 57600"})
+	if interval > 43200 {
+		c.JSON(400, gin.H{"error": "Interval must be less than 43200"})
 		return
 	}
 
