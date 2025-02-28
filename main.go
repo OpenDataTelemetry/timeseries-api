@@ -79,6 +79,9 @@ func main() {
 		api.GET("IMT/EVSE/Alert/all", controller.GetAllEvseAlert)
 		api.GET("IMT/EVSE/Alert/deviceId/:deviceId", controller.GetEvseAlertByDeviceId)
 
+		api.GET("IMT/EVSE/UnlockConnector/all", controller.GetAllEvseUnlockConnector)
+		api.GET("IMT/EVSE/UnlockConnector/deviceId/:deviceId", controller.GetEvseUnlockConnectorByDeviceId)
+
 		api.GET("IMT/HealthPack/Inertias/all", controller.GetAllHealthPackInertias)
 		api.GET("IMT/HealthPack/Inertias/deviceId/:deviceId", controller.GetHealthPackInertiasByDeviceId)
 
