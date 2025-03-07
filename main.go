@@ -82,6 +82,9 @@ func main() {
 		api.GET("IMT/EVSE/UnlockConnector/all", controller.GetAllEvseUnlockConnector)
 		api.GET("IMT/EVSE/UnlockConnector/deviceId/:deviceId", controller.GetEvseUnlockConnectorByDeviceId)
 
+		api.GET("IMT/EVSE/RemoteStopTransaction/all", controller.GetAllEvseRemoteStopTransaction)
+		api.GET("IMT/EVSE/RemoteStopTransaction/deviceId/:deviceId", controller.GetEvseRemoteStopTransactionByDeviceId)
+
 		api.GET("IMT/HealthPack/Inertias/all", controller.GetAllHealthPackInertias)
 		api.GET("IMT/HealthPack/Inertias/deviceId/:deviceId", controller.GetHealthPackInertiasByDeviceId)
 
