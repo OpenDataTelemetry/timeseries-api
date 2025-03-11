@@ -56,10 +56,11 @@ func GetAllEvseMeterValues(c *gin.Context) {
 			},
 			"name": "EvseMeterValues",
 			"tags": gin.H{
-				"chargePointId": value["chargePointId"],
+				// "chargePointId": value["chargePointId"],
 				"connectorId":   value["connectorId"],
 				"deviceType":    value["deviceType"],
 				"deviceId":      value["deviceId"],
+				"evseId":        value["evseId"],
 				"direction":     value["direction"],
 				"origin":        value["origin"],
 			},
@@ -120,12 +121,13 @@ func GetEvseMeterValuesByDeviceId(c *gin.Context) {
 			},
 			"name": "EvseMeterValues",
 			"tags": gin.H{
-				"chargePointId": value["chargePointId"],
-				"connectorId":   value["connectorId"],
-				"deviceType":    value["deviceType"],
-				"deviceId":      value["deviceId"],
-				"direction":     value["direction"],
-				"origin":        value["origin"],
+				// "chargePointId": value["chargePointId"],
+				"connectorId": value["connectorId"],
+				"deviceType":  value["deviceType"],
+				"deviceId":    value["deviceId"],
+				"evseId":      value["evseId"],
+				"direction":   value["direction"],
+				"origin":      value["origin"],
 			},
 			"timestamp": value["time"],
 		}
@@ -186,14 +188,15 @@ func GetAllEvseStatusNotification(c *gin.Context) {
 			},
 			"name": "EvseStatusNotification",
 			"tags": gin.H{
-				"chargePointId": value["chargePointId"],
-				"connectorId":   value["connectorId"],
-				"deviceType":    value["deviceType"],
-				"deviceId":      value["deviceId"],
-				"direction":     value["direction"],
-				"origin":        value["origin"],
-				"vendorId":      value["vendorId"],
-				"status":        value["status"],
+				// "chargePointId": value["chargePointId"],
+				"connectorId": value["connectorId"],
+				"deviceType":  value["deviceType"],
+				"deviceId":    value["deviceId"],
+				"evseId":      value["evseId"],
+				"direction":   value["direction"],
+				"origin":      value["origin"],
+				"vendorId":    value["vendorId"],
+				"status":      value["status"],
 			},
 			"timestamp": value["time"],
 		}
@@ -254,14 +257,15 @@ func GetEvseStatusNotificationByDeviceId(c *gin.Context) {
 			},
 			"name": "EvseStatusNotification",
 			"tags": gin.H{
-				"chargePointId": value["chargePointId"],
-				"connectorId":   value["connectorId"],
-				"deviceType":    value["deviceType"],
-				"deviceId":      value["deviceId"],
-				"direction":     value["direction"],
-				"origin":        value["origin"],
-				"vendorId":      value["vendorId"],
-				"status":        value["status"],
+				// "chargePointId": value["chargePointId"],
+				"connectorId": value["connectorId"],
+				"deviceType":  value["deviceType"],
+				"deviceId":    value["deviceId"],
+				"evseId":      value["evseId"],
+				"direction":   value["direction"],
+				"origin":      value["origin"],
+				"vendorId":    value["vendorId"],
+				"status":      value["status"],
 			},
 			"timestamp": value["time"],
 		}
@@ -323,12 +327,13 @@ func GetAllEvseStartTransaction(c *gin.Context) {
 			},
 			"name": "EvseStartTransaction",
 			"tags": gin.H{
-				"chargePointId": value["chargePointId"],
-				"connectorId":   value["connectorId"],
-				"deviceType":    value["deviceType"],
-				"deviceId":      value["deviceId"],
-				"direction":     value["direction"],
-				"origin":        value["origin"],
+				// "chargePointId": value["chargePointId"],
+				"connectorId": value["connectorId"],
+				"deviceType":  value["deviceType"],
+				"deviceId":    value["deviceId"],
+				"evseId":      value["evseId"],
+				"direction":   value["direction"],
+				"origin":      value["origin"],
 			},
 			"timestamp": value["time"],
 		}
@@ -390,12 +395,13 @@ func GetEvseStartTransactionByDeviceId(c *gin.Context) {
 			},
 			"name": "EvseStartTransaction",
 			"tags": gin.H{
-				"chargePointId": value["chargePointId"],
-				"connectorId":   value["connectorId"],
-				"deviceType":    value["deviceType"],
-				"deviceId":      value["deviceId"],
-				"direction":     value["direction"],
-				"origin":        value["origin"],
+				// "chargePointId": value["chargePointId"],
+				"connectorId": value["connectorId"],
+				"deviceType":  value["deviceType"],
+				"deviceId":    value["deviceId"],
+				"evseId":      value["evseId"],
+				"direction":   value["direction"],
+				"origin":      value["origin"],
 			},
 			"timestamp": value["time"],
 		}
@@ -456,12 +462,13 @@ func GetAllEvseStopTransaction(c *gin.Context) {
 			},
 			"name": "EvseStopTransaction",
 			"tags": gin.H{
-				"chargePointId": value["chargePointId"],
-				"connectorId":   value["connectorId"],
-				"deviceType":    value["deviceType"],
-				"deviceId":      value["deviceId"],
-				"direction":     value["direction"],
-				"origin":        value["origin"],
+				// "chargePointId": value["chargePointId"],
+				"connectorId": value["connectorId"],
+				"deviceType":  value["deviceType"],
+				"deviceId":    value["deviceId"],
+				"evseId":      value["evseId"],
+				"direction":   value["direction"],
+				"origin":      value["origin"],
 			},
 			"timestamp": value["time"],
 		}
@@ -522,12 +529,13 @@ func GetEvseStopTransactionByDeviceId(c *gin.Context) {
 			},
 			"name": "EvseStopTransaction",
 			"tags": gin.H{
-				"chargePointId": value["chargePointId"],
-				"connectorId":   value["connectorId"],
-				"deviceType":    value["deviceType"],
-				"deviceId":      value["deviceId"],
-				"direction":     value["direction"],
-				"origin":        value["origin"],
+				// "chargePointId": value["chargePointId"],
+				"connectorId": value["connectorId"],
+				"evseId":      value["evseId"],
+				"deviceType":  value["deviceType"],
+				"deviceId":    value["deviceId"],
+				"direction":   value["direction"],
+				"origin":      value["origin"],
 			},
 			"timestamp": value["time"],
 		}
@@ -594,6 +602,8 @@ func GetAllEvseAlert(c *gin.Context) {
 			"name": "Alert",
 			"tags": gin.H{
 				"deviceId":   value["deviceId"],
+				"connectorId": value["connectorId"],
+				"evseId":      value["evseId"],
 				"deviceType": value["deviceType"],
 				"direction":  value["direction"],
 				"etc":        value["origin"],
@@ -662,6 +672,8 @@ func GetEvseAlertByDeviceId(c *gin.Context) {
 			"name": "Alert",
 			"tags": gin.H{
 				"deviceId":   value["deviceId"],
+				"connectorId": value["connectorId"],
+				"evseId":      value["evseId"],
 				"deviceType": value["deviceType"],
 				"direction":  value["direction"],
 				"etc":        value["origin"],
@@ -676,7 +688,6 @@ func GetEvseAlertByDeviceId(c *gin.Context) {
 	}
 	c.IndentedJSON(http.StatusOK, objs)
 }
-
 
 func GetAllEvseUnlockConnector(c *gin.Context) {
 	intervalStr := c.Query("interval")
@@ -720,11 +731,13 @@ func GetAllEvseUnlockConnector(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
-				"data":         value["data"],
+				"data": value["data"],
 			},
 			"name": "UnlockConnector",
 			"tags": gin.H{
 				"deviceId":   value["deviceId"],
+				"connectorId": value["connectorId"],
+				"evseId":      value["evseId"],
 				"deviceType": value["deviceType"],
 				"direction":  value["direction"],
 				"etc":        value["origin"],
@@ -782,11 +795,13 @@ func GetEvseUnlockConnectorByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
-				"data":         value["data"],
+				"data": value["data"],
 			},
 			"name": "UnlockConnector",
 			"tags": gin.H{
 				"deviceId":   value["deviceId"],
+				"connectorId": value["connectorId"],
+				"evseId":      value["evseId"],
 				"deviceType": value["deviceType"],
 				"direction":  value["direction"],
 				"etc":        value["origin"],
@@ -844,11 +859,13 @@ func GetAllEvseRemoteStopTransaction(c *gin.Context) {
 		value := iterator.Value() // Value of the current row
 		obj := gin.H{
 			"fields": gin.H{
-				"data":         value["data"],
+				"data": value["data"],
 			},
 			"name": "RemoteStopTransaction",
 			"tags": gin.H{
 				"deviceId":   value["deviceId"],
+				"connectorId": value["connectorId"],
+				"evseId":      value["evseId"],
 				"deviceType": value["deviceType"],
 				"direction":  value["direction"],
 				"etc":        value["origin"],
@@ -906,11 +923,13 @@ func GetEvseRemoteStopTransactionByDeviceId(c *gin.Context) {
 		value := iterator.Value()
 		obj := gin.H{
 			"fields": gin.H{
-				"data":         value["data"],
+				"data": value["data"],
 			},
 			"name": "RemoteStopTransaction",
 			"tags": gin.H{
 				"deviceId":   value["deviceId"],
+				"connectorId": value["connectorId"],
+				"evseId":      value["evseId"],
 				"deviceType": value["deviceType"],
 				"direction":  value["direction"],
 				"etc":        value["origin"],
